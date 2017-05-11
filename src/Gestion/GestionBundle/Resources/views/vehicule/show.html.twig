@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vehicule</h1>
+        <div class="p20 mb50 col-md-8">
+
+            <table class="table tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+      
+                <tbody>
+
+                    <tr>
+                        <th>Marque</th>
+                        <td>{{ vehicule.marque }}</td>
+                    </tr>
+                    <tr>
+                        <th>Immatriculation</th>
+                        <td>{{ vehicule.immatriculation }}</td>
+                    </tr>
+                    <tr>
+                        <th>Places</th>
+                        <td>{{ vehicule.places }}</td>
+                    </tr>
+                    <tr>
+                        <th>Climatisation</th>
+                        <td>{{ vehicule.climatisation }}</td>
+                    </tr>
+                    <tr>
+                        <th>Télévision</th>
+                        <td>{{ vehicule.tele }}</td>
+                    </tr>
+                    <tr>
+                        <th>Enrégistré le</th>
+                        <td>{% if vehicule.created %}{{ vehicule.created|date('d/m/Y') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Path</th>
+                        <td>{{ vehicule.path }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="p20 col-md-4">
+            image ici
+        </div>
+                    <div class="clearfix"></div>
+    <a class="btn btn-primary"  href="{{ path('vehicule_index') }}">Liste des vehicules</a>
+
+    <a class="btn btn-success" href="{{ path('vehicule_edit', { 'id': vehicule.id }) }}">Modifier</a>
+
+{% endblock %}

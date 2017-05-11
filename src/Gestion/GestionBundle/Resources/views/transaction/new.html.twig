@@ -1,0 +1,259 @@
+{% extends 'base_visiteur.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-lg-3">                    
+                <div class="sidebar">
+                    <div class="widget">
+                        <h2 class="widgettitle">Détails du voyage</h2>
+
+                        <ul class="menu">
+                            <li>
+                                <a href="#">VOTRE VOYAGE: <br />
+                                    {% if voyage %}
+                                        <strong style="font-size: 14px;">
+                                            {{ voyage.lieuDepart|upper  }}
+                                            ▶ 
+                                            {{ voyage.lieuArrivee|upper  }} 
+                                        </strong>
+                                        <p> Gare de Départ {{ voyage.gare|capitalize  }} </p>
+                                    {% endif %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Date de départ: <br />
+                                    <strong style="font-size: 14px;">
+                                        {% if voyage %}                                            
+                                            {% if voyage.dateVoyage %}{{ voyage.dateVoyage|date('d/m/Y') }}{% endif %}
+                                            à
+                                            {% if voyage.heureDepart %}{{ voyage.heureDepart|date('H:i') }}{% endif %}
+                                        {% endif %}
+                                    </strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Nombre de places & montant: <br />
+                                    {% if voyage %}
+                                        <strong style="font-size: 14px;">
+                                            Nombre de place: {{ nbreTicket  }} <br />
+                                            Prix unitaire: {{ voyage.prixVoyage|number_format  }} 
+                                        </strong>
+                                    {% endif %}
+                                </a>
+                            </li>
+                        </ul><!-- /.menu -->
+                    </div><!-- /.wifget -->
+
+                </div><!-- /.sidebar -->
+            </div><!-- /.col-* -->
+
+            <div class="col-sm-8 col-lg-9">
+                <div class="content">
+                    <div class="page-title">
+                        <h5>Procédez au paiement sécurisé maintenant. <b  style="font-size: 18px; color: #ff8c00;">Montant de : {{ (nbreTicket * voyage.prixVoyage)|number_format }} F CFA</b></h5>
+                    </div><!-- /.page-title -->
+
+                    <div class="posts">
+                        <div class="post">
+                            <div class="post-meta clearfix">
+                                <div style="font-size: 18px;">
+
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="#orange" aria-controls="orange" role="tab" data-toggle="tab"> 
+                                                <img width="35" height="35" src="{{asset('assets/img/orange.png') }}" alt="orange"/> 
+                                                Orange Money
+                                            </a>
+                                        </li>
+                                        <li role="presentation"><a href="#mtn" aria-controls="mtn" role="tab" data-toggle="tab"> 
+                                                <img width="35" height="35" src="{{asset('assets/img/mtn.png') }}" alt="mtn"/>
+                                                MTN Mobile Money</a></li>
+                                        <li role="presentation"><a href="#moov" aria-controls="moov" role="tab" data-toggle="tab"> 
+                                                <img width="35" height="35" src="{{asset('assets/img/moov.png') }}" alt="moov"/>
+                                                 FLOOZ</a></li>
+                                        <li role="presentation"><a href="#appel" aria-controls="appel" role="tab" data-toggle="tab">
+                                                <img width="35" height="35" src="{{asset('assets/img/phone.png') }}" alt="appel"/>
+                                                Appel téléphonique</a></li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade in active" id="orange"> 
+                                            <div class="p20">
+
+                                                <div class="row">
+
+                                                    <div class="col-sm-12">  
+                                                        <p>Paiement avec orange money. </p>
+                                                        Veulliez saisir votre numéro de l'opération. Le code de validation est
+                                                        <b  style="font-size: 15px; color: #ff8c00;">#120*3*code secret# </b>
+                                                    </div>
+                                                    <div class="col-sm-12">  
+                                                         {{ form_start(form_orange, {'action': path('transaction_new', { 'voyage': voyage.id, 'nbrepay':nbreTicket, 'op':'orange' }), 'method': 'POST'})  }}
+                                                       
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-md-4">
+                                                                <div class="form-group">
+                                                                    {{ form_row(form_orange.compteVoyageur.nom) }}
+                                                                </div><!-- /.form-group -->
+                                                            </div><!-- /.col-* -->
+                                                            <div class="col-sm-12 col-md-4">
+                                                                <div class="form-group">
+                                                                    {{ form_row(form_orange.compteVoyageur.phone) }} </div><!-- /.form-group -->
+                                                            </div><!-- /.col-* -->
+                                                            <div class="col-sm-12 col-md-4">
+                                                                <div class="form-group">
+                                                                    {{ form_row(form_orange.compteVoyageur.email) }}
+                                                                </div><!-- /.form-group -->
+                                                            </div><!-- /.col-* -->
+
+                                                        </div><!-- /.row -->
+
+                                                        <hr>
+
+                                                        <div class="row">
+                                                            <div class="col-sm-8">
+                                                                <div class="filter-actions">
+
+
+                                                                </div><!-- /.filter-actions -->
+                                                            </div><!-- /.col-* -->
+
+                                                            <div class="col-sm-4">
+                                                                <button type="submit" class="btn btn-primary">ACHETER VOTRE TICKET </button>
+                                                            </div><!-- /.col-* -->
+                                                        </div><!-- /.row -->
+                                                        {{ form_end(form_orange) }}
+
+
+                                                    </div><!-- /.col -->
+                                                </div><!-- /.row -->
+
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="mtn">
+                                            <div class="p20">
+                                                <div class="row">
+                                                    <div class="col-sm-12">  
+                                                        <p>Paiement avec MTN money. </p>
+                                                        Veulliez saisir votre numéro de l'opération. Le code de validation est
+                                                        <b  style="font-size: 15px; color: #ff8c00;">#120*3*code secret# </b>
+                                                    </div>
+                                                    <div class="col-sm-12">  
+                                                        {{ form_start(form_mtn, {'action': path('transaction_new', { 'voyage': voyage.id, 'nbrepay':nbreTicket, 'op':'mtn' }), 'method': 'POST'})  }}
+                                                       
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-md-4">
+                                                                <div class="form-group">
+                                                                    {{ form_row(form_mtn.compteVoyageur.nom) }}
+                                                                </div><!-- /.form-group -->
+                                                            </div><!-- /.col-* -->
+                                                            <div class="col-sm-12 col-md-4">
+                                                                <div class="form-group">
+                                                                    {{ form_row(form_mtn.compteVoyageur.phone) }} </div><!-- /.form-group -->
+                                                            </div><!-- /.col-* -->
+                                                            <div class="col-sm-12 col-md-4">
+                                                                <div class="form-group">
+                                                                    {{ form_row(form_mtn.compteVoyageur.email) }}
+                                                                </div><!-- /.form-group -->
+                                                            </div><!-- /.col-* -->
+
+                                                        </div><!-- /.row -->
+
+                                                        <hr>
+
+                                                        <div class="row">
+                                                            <div class="col-sm-8">
+                                                                <div class="filter-actions">
+                                                                    <a href="#"><i class="fa fa-close"></i> Reset Filter</a>
+                                                                    <a href="#"><i class="fa fa-save"></i> Save Search</a>
+                                                                </div><!-- /.filter-actions -->
+                                                            </div><!-- /.col-* -->
+
+                                                            <div class="col-sm-4">
+                                                                <button type="submit" class="btn btn-primary">ACHETER VOTRE TICKET </button>
+                                                            </div><!-- /.col-* -->
+                                                        </div><!-- /.row -->
+                                                        {{ form_end(form_mtn) }}
+
+                                                    </div><!-- /.col -->
+                                                </div><!-- /.row -->
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="moov">
+                                            <div class="p20">
+                                                <div class="row">
+                                                    <div class="col-sm-12">  
+                                                        <p>Paiement avec Flooz Moov. </p>
+                                                        Veulliez saisir votre numéro de l'opération. Le code de validation est
+                                                        <b  style="font-size: 15px; color: #ff8c00;">#120*3*code secret# </b>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        
+                                                        {{ form_start(form_moov, {'action': path('transaction_new', { 'voyage': voyage.id, 'nbrepay':nbreTicket, 'op':'moov' }), 'method': 'POST'})  }}
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-md-4">
+                                                                <div class="form-group">
+                                                                    {{ form_row(form_moov.compteVoyageur.nom) }}
+                                                                </div><!-- /.form-group -->
+                                                            </div><!-- /.col-* -->
+                                                            <div class="col-sm-12 col-md-4">
+                                                                <div class="form-group">
+                                                                    {{ form_row(form_moov.compteVoyageur.phone) }} </div><!-- /.form-group -->
+                                                            </div><!-- /.col-* -->
+                                                            <div class="col-sm-12 col-md-4">
+                                                                <div class="form-group">
+                                                                    {{ form_row(form_moov.compteVoyageur.email) }}
+                                                                </div><!-- /.form-group -->
+                                                            </div><!-- /.col-* -->
+
+                                                        </div><!-- /.row -->
+
+                                                        <hr>
+
+                                                        <div class="row">
+                                                            <div class="col-sm-8">
+                                                                <div class="filter-actions">
+                                                                    <a href="#"><i class="fa fa-save"></i> Save Search</a>
+                                                                </div><!-- /.filter-actions -->
+                                                            </div><!-- /.col-* -->
+
+                                                            <div class="col-sm-4">
+                                                                <button type="submit" class="btn btn-primary">ACHETER VOTRE TICKET </button>
+                                                            </div><!-- /.col-* -->
+                                                        </div><!-- /.row -->
+                                                        {{ form_end(form_moov) }}
+
+
+                                                    </div><!-- /.col -->
+                                                </div><!-- /.row -->
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="appel">
+                                            <div class="p20">
+                                                <div class="row">
+                                                    <div class="col-sm-12">  
+                                                        <p> Vous pouvez faire un paiement par appel au service client. </p>
+                                                        Veulliez appeler sur un de ces numéros pour vous aider dans cette opération. <br />
+                                                        <b  style="font-size: 15px; color: #ff8c00;"> 58 57 32 90 /  43 32 13 15 / 06 27 79 58. </b>
+                                                    </div>
+
+                                                </div><!-- /.row -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div><!-- /.post-meta -->
+                        </div><!-- /.post -->
+
+                    </div><!-- /.posts -->
+
+                </div><!-- /.content -->   
+            </div><!-- /.row --> 
+        </div><!-- /.container -->
+    </div><!-- /.container -->
+
+{% endblock %}

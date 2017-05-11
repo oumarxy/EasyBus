@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>CompteVoyageur list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Created</th>
+                <th>Phone</th>
+                <th>Emails</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for compteVoyageur in compteVoyageurs %}
+            <tr>
+                <td><a href="{{ path('comptevoyageur_show', { 'id': compteVoyageur.id }) }}">{{ compteVoyageur.id }}</a></td>
+                <td>{% if compteVoyageur.created %}{{ compteVoyageur.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ compteVoyageur.phone }}</td>
+                <td>{% if compteVoyageur.emails %}{{ compteVoyageur.emails|join(', ') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('comptevoyageur_show', { 'id': compteVoyageur.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('comptevoyageur_edit', { 'id': compteVoyageur.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('comptevoyageur_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

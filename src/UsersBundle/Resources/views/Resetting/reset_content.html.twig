@@ -1,0 +1,11 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="page-title" style="margin-top: 10px !important;margin-bottom: 20px !important;">
+        <h1>Réinitialisation</h1>
+    </div><!-- /.page-title -->   
+{{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+ 
+{{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'resetting.reset.submit'|trans }}" class="btn btn-primary btn-block"/>
+    </div>
+{{ form_end(form) }}

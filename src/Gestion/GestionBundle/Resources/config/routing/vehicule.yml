@@ -1,0 +1,24 @@
+vehicule_index:
+    path:     /
+    defaults: { _controller: "GestionBundle:Vehicule:index" }
+    methods:  GET
+
+vehicule_show:
+    path:     /{id}/show
+    defaults: { _controller: "GestionBundle:Vehicule:show" }
+    methods:  GET
+
+vehicule_new:
+    path:     /new
+    defaults: { _controller: "GestionBundle:Vehicule:new" }
+    methods:  [GET, POST]
+
+vehicule_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GestionBundle:Vehicule:edit" }
+    methods:  [GET, POST]
+
+vehicule_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GestionBundle:Vehicule:delete" }
+    methods:  DELETE

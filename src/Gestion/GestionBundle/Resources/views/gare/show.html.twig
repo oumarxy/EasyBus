@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gare</h1>
+
+    <div class="p20 mb50 col-md-8">
+
+        <table class="table tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+            <tbody>
+                <tr>
+                    <th>Identifiant</th>
+                    <td>{{ gare.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom de la Gare</th>
+                    <td>{{ gare.nomGare }}</td>
+                </tr>
+                <tr>
+                    <th>Ville</th>
+                    <td>{{ gare.ville }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ gare.description }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="clearfix"> &nbsp; </div>
+    <a class="btn btn-primary"  href="{{ path('gare_index') }}">Liste des gares</a>
+
+    <a class="btn btn-success" href="{{ path('gare_edit', { 'id': gare.id }) }}">Modifier</a>
+
+
+{% endblock %}

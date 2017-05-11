@@ -1,0 +1,42 @@
+{#% extends 'base.html.twig' %#}
+{# extends non utilisé ici#}
+
+{% block bodyvehicules %}
+     <div class="background-white p20 mb50">
+        <h2 id="vehi" class="page-title">Liste des vehicules</h2>
+
+        <table class="table tableliste tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+            <thead>
+                <tr>
+                    <th>Marque</th>
+                <th>Immatriculation</th>
+                <th>Places</th>
+                <th>Climatisation</th>
+                <th>Télévision</th>
+                <th>Enrégistré le</th>
+                <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                 {% for vehicule in vehicules %}
+            <tr>
+                <td>{{ vehicule.marque }}</td>
+                <td>{{ vehicule.immatriculation }}</td>
+                <td>{{ vehicule.places }}</td>
+                <td>{{ vehicule.climatisation }}</td>
+                <td>{{ vehicule.tele }}</td>
+                <td>{% if vehicule.created %}{{ vehicule.created|date('d/m/Y') }}{% endif %}</td>
+                <td>
+                            <a href="{{ path('vehicule_show', { 'id': vehicule.id }) }}">show</a>
+                            <a href="{{ path('vehicule_edit', { 'id': vehicule.id }) }}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+            <a class="btn btn-success" href="{{ path('vehicule_new') }}">Nouveau vehicule</a>
+
+    </div>
+{% endblock %}

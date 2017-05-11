@@ -1,0 +1,128 @@
+        {# flashMessage|trans|raw|nl2br #}
+            {% set message = "" %}
+            {% set etat = "" %}
+            {% set script = "" %}
+
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                {% set message = flashMessage|trans|raw|nl2br %}
+                {% set etat = "Succès" %}
+            {% endfor %}
+
+            {% for flashMessage in app.session.flashbag.get('error') %}
+                {% set message = flashMessage %}
+                {% set etat = "Erreur" %}
+            {% endfor %}
+
+            {% for flashMessage in app.session.flashbag.get('info') %}
+                {% set message = flashMessage %}
+                {% set etat = "Info" %}
+            {% endfor %}
+
+            {% for flashMessage in app.session.flashbag.get('warning') %}
+                {% set message = flashMessage %}
+                {% set etat = "Attention" %}
+            {% endfor %}
+
+            {% if etat == "Succès" %}
+                <script>
+                    $(document).ready(function () {
+
+                                toastr.success('{{ message }}', '{{ etat }}',
+                                {
+                                    "closeButton": true,
+                                    "debug": false,
+                                    "newestOnTop": false,
+                                    "progressBar": true,
+                                    "positionClass": "toast-bottom-left",
+                                    "preventDuplicates": false,
+                                    "onclick": null,
+                                    "showDuration": "3000",
+                                    "hideDuration": "1000",
+                                    "timeOut": "5000",
+                                    "extendedTimeOut": "1000",
+                                    "showEasing": "swing",
+                                    "hideEasing": "linear",
+                                    "showMethod": "fadeIn",
+                                    "hideMethod": "fadeOut"
+                                });
+                    });
+                </script>
+            {% endif %}
+
+            {% if etat == "Erreur" %}
+                <script>
+                    $(document).ready(function () {
+
+                        toastr.error('{{ message }}', '{{ etat }}',
+                                {
+                                    "closeButton": true,
+                                    "debug": false,
+                                    "newestOnTop": false,
+                                    "progressBar": true,
+                                    "positionClass": "toast-bottom-left",
+                                    "preventDuplicates": false,
+                                    "onclick": null,
+                                    "showDuration": "3000",
+                                    "hideDuration": "1000",
+                                    "timeOut": "5000",
+                                    "extendedTimeOut": "1000",
+                                    "showEasing": "swing",
+                                    "hideEasing": "linear",
+                                    "showMethod": "fadeIn",
+                                    "hideMethod": "fadeOut"
+                                });
+                    });
+                </script>
+            {% endif %}
+            {% if etat == "Info" %}
+                <script>
+                    $(document).ready(function () {
+
+                        toastr.info('{{ message }}', '{{ etat }}',
+                                {
+                                    "closeButton": true,
+                                    "debug": false,
+                                    "newestOnTop": false,
+                                    "progressBar": true,
+                                    "positionClass": "toast-bottom-left",
+                                    "preventDuplicates": false,
+                                    "onclick": null,
+                                    "showDuration": "3000",
+                                    "hideDuration": "1000",
+                                    "timeOut": "5000",
+                                    "extendedTimeOut": "1000",
+                                    "showEasing": "swing",
+                                    "hideEasing": "linear",
+                                    "showMethod": "fadeIn",
+                                    "hideMethod": "fadeOut"
+                                });
+                    });
+                </script>
+            {% endif %}
+            {% if etat == "Attention" %}
+                <script>
+                    $(document).ready(function () {
+
+                        toastr.warning('{{ message }}', '{{ etat }}',
+                                {
+                                    "closeButton": true,
+                                    "debug": false,
+                                    "newestOnTop": false,
+                                    "progressBar": true,
+                                    "positionClass": "toast-bottom-left",
+                                    "preventDuplicates": false,
+                                    "onclick": null,
+                                    "showDuration": "3000",
+                                    "hideDuration": "1000",
+                                    "timeOut": "5000",
+                                    "extendedTimeOut": "1000",
+                                    "showEasing": "swing",
+                                    "hideEasing": "linear",
+                                    "showMethod": "fadeIn",
+                                    "hideMethod": "fadeOut"
+                                });
+                    });
+                </script>
+            {% endif %}
+
+

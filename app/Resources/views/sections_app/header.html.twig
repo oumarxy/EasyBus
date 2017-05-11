@@ -1,0 +1,68 @@
+<header class="header">
+
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-logo">
+                    <a href="{{path('gestion_home')}}">
+                        <img src="{{asset('assets/img/logo.png') }}" alt="Logo">
+                        <span>Easy Bus</span>
+                    </a>
+                </div><!-- /.header-logo -->
+
+                <div class="header-content">
+                    <div class="header-bottom">
+                        <div class="header-action">
+                            <a href="#" class="header-action-inner" title="Add Listing" data-toggle="tooltip" data-placement="bottom">
+                                <i class="fa fa-plus"></i>
+                            </a><!-- /.header-action-inner -->
+                        </div><!-- /.header-action -->
+
+                        <ul class="header-nav-primary nav nav-pills collapse navbar-collapse">
+                            
+                            <li>
+                                <a href="{{path('gestion_page',{'page':'aide'}) }}">Aide <i class="fa fa-chevron-down"></i></a>
+                            </li>
+                            <li class="">
+                                <a href="{{path('gestion_page',{'page':'a-propos'}) }}">À propos <i class="fa fa-chevron-down"></i></a>
+                            </li>
+                            <li >
+                                <a href="#">Contact <i class="fa fa-chevron-down"></i></a>
+                              <!--  <ul class="sub-menu">
+                                    <li><a href="#">Contact v1</a></li>
+                                    <li><a href="#">Contact v2</a></li>
+                                </ul>
+                                -->
+                            </li>
+                            <li class="active">
+                            {% if app.user %}
+                                <a href="#">{{app.user.email}} <i class="fa fa-chevron-down"></i></a>
+                                <ul class="sub-menu">
+                                    <li> <a href="{{path('gestion_home_admin')}}">Tableau de bord </a></li>
+                                    <li><a href="#">Profil</a></li>
+                                    <!-- <li><a href="{{path('fos_user_profile_show')}}">  Profil </a> -->
+                                    <li><a href="{{path('fos_user_security_logout')}}">Déconnexion </a></li>
+                                </ul>
+                            {% else %}
+                                <a href="{{path('fos_user_security_login')}}">Connexion </a>
+                            {% endif %}
+                                
+                            </li>
+
+                        </ul>
+                        <!--
+                        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".header-nav-primary">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button> 
+                        -->
+
+                    </div><!-- /.header-bottom -->
+                </div><!-- /.header-content -->
+            </div><!-- /.header-inner -->
+        </div><!-- /.container -->
+    </div><!-- /.header-wrapper -->
+
+</header><!-- /.header -->

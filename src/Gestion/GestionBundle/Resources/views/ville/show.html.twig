@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ville</h1>
+
+    <div class="p20 mb50 col-md-8">
+
+        <table class="table  tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+            <tbody>
+                <tr>
+                    <th>Identifiant</th>
+                    <td>{{ ville.id }}</td>
+                </tr>
+                <tr>
+                    <th>Ville</th>
+                    <td>{{ ville.nomVille }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+ </div>
+        <div class="clearfix"> &nbsp; </div>
+        <a class="btn btn-primary"  href="{{ path('ville_index') }}">Liste des villes</a>
+
+        <a class="btn btn-success" href="{{ path('ville_edit', { 'id': ville.id }) }}">Modifier</a>
+
+    {% endblock %}

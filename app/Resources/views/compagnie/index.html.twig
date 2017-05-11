@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="background-white col-md-12 p20">
+        <h3 class="page-title">Liste des Compagnies</h3>
+
+        <table class="table tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Contact</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for compagnie in compagnies %}
+            <tr>
+                <td>{{ compagnie.nom }}</td>
+                <td>{{ compagnie.description }}</td>
+                <td>{{ compagnie.contact }}</td>
+                <td>
+                    
+                            <a href="{{ path('compagnie_show', { 'id': compagnie.id }) }}">Voir</a>
+                       
+                            <a href="{{ path('compagnie_edit', { 'id': compagnie.id }) }}">edit</a>
+                       
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <div class="clearfix">&nbsp;</div>
+        <a class="btn btn-success" href="{{ path('compagnie_new') }}">Nouvelle compagnie</a>
+
+    </div>
+{% endblock %}
+

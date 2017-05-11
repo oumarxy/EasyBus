@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <h2>Modifier un voyage </h2>
+    {{ form_start(edit_form) }}
+
+    <div class="col-md-5">
+
+        {{ form_row(edit_form.lieuDepart, {'id':'villekey','attr':
+        {'class':'form-control suivielt'}}) }}
+        {{ form_row(edit_form.lieuArrivee) }}
+        {{ form_row(edit_form.dateVoyage, {'id':'calendar','attr':
+        {'class':'form-control datepickerSimple','placeholder':'Date'}}) }}
+        {{ form_row(edit_form.heureDepart, {'attr':
+        {'class':'form-control mytime'}}) }}
+        {{ form_row(edit_form.heureArrivee, {'attr':
+        {'class':'form-control mytime'}}) }}
+    </div>
+    <div class="col-md-5">
+
+        {{ form_row(edit_form.gare, {'id':'garekey','attr':
+        {'class':'form-control'}}) }}
+        {{ form_row(edit_form.prixVoyage) }}
+        {{ form_row(edit_form.vehicule, {'id':'vehiculekey','attr':
+        {'class':'form-control suivielt','placeholder':'Choisir un véhicule'}}) }}
+        {{ form_row(edit_form.placesDispo, {'id':'placedispokey','attr':
+        {'class':'form-control'}}) }}
+        {{ form_row(edit_form.conducteur) }}
+    </div>
+    <div class="col-md-10">
+    <div class="pull-right">
+                        <a class="btn btn-primary"  href="{{ path('voyage_index') }}">Liste des voyages</a>
+            <input type="submit" class="btn btn-success" value="Ajouter" />
+
+    </div>
+    </div>
+    {{ form_end(edit_form) }}
+
+{% endblock %}

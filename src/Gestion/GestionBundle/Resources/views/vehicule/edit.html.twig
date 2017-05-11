@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3>Modifier un vehicule </h3>
+<div class="row">
+    {{ form_start(edit_form) }}
+
+    <div class="col-md-4 col-md-offset-1">
+        {{ form_row(edit_form.marque) }}
+         {{ form_row(edit_form.immatriculation) }}
+           {{ form_row(edit_form.places) }}
+           
+            <a class="btn btn-primary"  href="{{ path('vehicule_index') }}">Liste des vehicules</a>
+
+</div>
+ <div class="col-md-4">
+          {{ form_row(edit_form.climatisation) }}
+        {{ form_row(edit_form.tele) }}
+         {{ form_row(edit_form.path) }}
+      <input type="submit" class="btn btn-success" value="Ajouter" />
+</div>
+    {{ form_end(edit_form) }}
+    
+</div>
+{% endblock %}

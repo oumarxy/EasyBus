@@ -1,0 +1,44 @@
+{% extends 'root.html.twig' %}
+
+{% block root %}
+
+    <div class="page-wrapper">
+        {# le header  #}
+        {% block header %}
+            {% include "::sections_app/header.html.twig" %}
+        {% endblock %}
+        <div class="main">
+            <div class="outer-admin">
+                <div class="wrapper-admin">
+                    {% block main_sidebar %}
+                        {% include "::sections_app/main_sidebar.html.twig" %}
+                    {% endblock %}
+                    <div class="content-admin">
+                        <div class="content-admin-wrapper">
+                            <div class="content-admin-main">
+                                <div class="content-admin-main-inner">
+                                    <div class="container-fluid">
+                                        {# le contenu  #}
+                                        {% block body %}	{% endblock %}
+                                    </div><!-- /.container-fluid -->
+                                </div><!-- /.content-admin-main-inner -->
+                            </div><!-- /.content-admin-main -->
+
+                            <div class="content-admin-footer">
+                                <div class="container-fluid">
+                                    <div class="content-admin-footer-inner">
+                                        &copy; 2016 All rights reserved.  <a href="#">Easy Bus</a>.
+                                    </div><!-- /.content-admin-footer-inner -->
+                                </div><!-- /.container-fluid -->
+                            </div><!-- /.content-admin-footer  -->
+                        </div><!-- /.content-admin-wrapper -->
+                    </div><!-- /.content-admin -->
+                </div><!-- /.wrapper-admin -->
+            </div><!-- /.outer-admin -->
+        </div><!-- /.main -->
+    </div><!-- /.page-wrapper -->
+
+
+{% endblock %}
+
+

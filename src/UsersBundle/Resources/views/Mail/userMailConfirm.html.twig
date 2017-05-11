@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <base href="" />
+        <title>Confirmation</title>
+    </head>
+    <body>
+        <p>
+            Bonjour <strong> {#% if (user.sexe=='M') %} M.  {% else  %} Mme. {% endif %#}  {{user.nom}} {{user.prenoms}}, </strong> <br/> 
+            Votre Compte a été créé et activé avec succès. <br/> <br/>
+            Vos Identifiants sont: <br/>
+            Login: <i>{{user.username}} </i> <br/>
+            Mot de Passe : <font color="red"> {{password}} </font> <br/><br/>
+            Vous pouvez dès maintenant vous connecter <a href="{{ absolute_url(path('fos_user_security_login')) }}">ICI</a> <br/>
+
+            avec vos identifiants <br/><br/><br/>
+
+
+
+
+        </p>
+
+<div style="width:100%;">
+
+<div style="width:25%;">
+        <p>
+            Bien à vous !
+            Team Admin, <br/>
+            GPP
+        </p>
+		</div>
+
+<div style="width:25%;">
+        <p>
+		<img alt="logo" src="{{ absolute_url(asset('assets/images/logo.png')) }}"/>
+        </p>
+</div>
+</div>
+    </body>
+</html>
+

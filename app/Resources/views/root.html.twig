@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <meta name="description" content="Easybus est une app de reservation de tickets de voyage">
+        <meta name="author" content="">
+        <title>{% block title %}Easy Bus | Voyager en toute sécurité.{% endblock %}</title>
+
+        <link href="{{asset('assets/libraries/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{asset('assets/libraries/bootstrap/css/bootstrap-theme.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{asset('assets/libraries/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{asset('assets/libraries/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{asset('assets/css/my-main.css') }}" rel="stylesheet" type="text/css" >
+        <!-- 
+         <link href="{{asset('assets/libraries/datatables-bootstrap/datatables-bootstrap/owl.carousel.css') }}" rel="stylesheet" type="text/css" >
+              <link href="{{asset('assets/libraries/colorbox/example1/colorbox.css') }}" rel="stylesheet" type="text/css" >
+                <link href="{{asset('assets/libraries/bootstrap-fileinput/fileinput.min.css') }}" rel="stylesheet" type="text/css">
+      
+        --> 
+
+        <link href="{{asset('assets/libraries/datatables/datatables.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{asset('assets/libraries/datatables-bootstrap/dataTables.bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    {% block stylesheets %}{% endblock %}
+
+    <link rel="stylesheet" href="{{ asset('custom/css/timedropper.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('custom/css/toastr.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('custom/css/mystyle.css') }}"/>
+    <!-- Fonts -->
+    {% block fontscss %}
+        <link href="{{asset('assets/libraries/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    {% endblock %}
+
+</head>
+<body>
+{% block root %}{% endblock %}
+
+<!-- Plugins -->
+<script src="{{ asset('assets/js/jquery.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/libraries/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+
+<!-- safric -->
+<script src="{{ asset('custom/js/toastr.min.js') }}"></script>
+{{ include(":sections_app:flashMessages.html.twig") }}
+
+<script src="{{ asset('assets/libraries/datatables/jquery.dataTables.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/libraries/datatables-bootstrap/dataTables.bootstrap.js') }}" type="text/javascript"></script>
+
+<script src="{{ asset('assets/libraries/bootstrap-select/js/bootstrap-select.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/libraries/bootstrap-datepicker/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/libraries/bootstrap-datepicker/locales/bootstrap-datepicker.fr.min.js') }}" type="text/javascript"></script>
+
+<script src="{{ asset('assets/js/my-main.js') }}" type="text/javascript"></script>
+
+{% block javascripts %}
+    <script>
+        $('.datepicker').datepicker({
+            format: 'dd-mm-yyyy',
+            startDate: 'd',
+            autoclose: true,
+            language: 'fr',
+            todayBtn: true,
+            todayHighlight: true
+                    // endDate: '+10d'
+        });
+        $('.datepickerSimple').datepicker({
+            format: 'dd-mm-yyyy',
+            autoclose: true,
+            language: 'fr',
+            todayHighlight: true
+        });
+        $('.tableliste').dataTable();
+        /*
+         $("#spinner").spinner('changing', function (e, newVal, oldVal) {
+         if (newVal > 1) {
+         $('#textpassager').html("Passagers");
+         } else {
+         $('#textpassager').html("Passager");
+         }
+         });
+         */
+    </script>
+{% endblock %}
+{% block validationJs %}
+{% endblock %}
+
+<!-- pour les requetes ajax -->
+<script src="{{ asset('custom/js/timedropper.js') }}"></script>
+<script src="{{ asset('custom/js/mystyle.js') }}"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+</body>
+</html>

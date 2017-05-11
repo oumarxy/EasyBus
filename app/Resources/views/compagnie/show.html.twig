@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+                <h1>Compagnie</h1>
+
+    <div class="p20 mb50 col-md-8">
+
+        <table class="table tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ compagnie.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ compagnie.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ compagnie.description }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ compagnie.contact }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    </div>
+    <div class="clearfix"> &nbsp; </div>
+    <a class="btn btn-primary"  href="{{ path('compagnie_index') }}">Liste des compagnies</a>
+
+    <a class="btn btn-success" href="{{ path('compagnie_edit', { 'id': compagnie.id }) }}">Modifier</a>
+
+
+{% endblock %}
+

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="background-white p20 mb50">
+        <h2 class="page-title">Liste des voyages</h2>
+
+        <table class="table tableliste tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+            <thead>
+                <tr>
+
+                    <th>Date</th>
+                    <th>Heure depart</th>
+                    <th>Heure arrivee</th>
+                    <th>depart</th>
+                    <th>arrivee</th>
+                    <th>Places</th>
+                    <th>Prix</th>  
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                
+        {% for voyage in voyages %}
+                <tr>
+                    <td>{% if voyage.dateVoyage %}{{ voyage.dateVoyage|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if voyage.heureDepart %}{{ voyage.heureDepart|date('H:i:s') }}{% endif %}</td>
+                    <td>{% if voyage.heureArrivee %}{{ voyage.heureArrivee|date('H:i:s') }}{% endif %}</td>
+                    <td>{{ voyage.lieuDepart }}</td>
+                    <td>{{ voyage.lieuArrivee }}</td>
+                    <td>{{ voyage.placesDispo }}</td>
+                    <td>{{ voyage.prixVoyage }}</td>
+                    <td>
+                        <a href="{{ path('voyage_show', { 'id': voyage.id }) }}">Voir</a>
+                        <a href="{{ path('voyage_edit', { 'id': voyage.id }) }}">Editer</a>
+                    </td>
+                </tr>
+                
+        {% endfor %}
+            </tbody>
+        </table>
+
+        <a class="btn btn-primary" href="{{ path('voyage_new') }}">Nouveau voyage</a>
+</div>
+
+
+{% endblock %}

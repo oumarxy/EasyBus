@@ -1,0 +1,27 @@
+{% extends 'base_visiteur.html.twig' %}
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <br/>
+            {% if app.request.hasPreviousSession %}
+                {% for type, messages in app.session.flashbag.all() %}
+                    <div class="alert alert-{{ type }}">
+                        <ul>
+                            {% for message in messages %}
+                                <li>
+                                    {{ message }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col-sm-4 col-sm-offset-4">
+            {% block fos_user_content %}
+
+            {% endblock fos_user_content %}
+        </div>
+    </div>
+{% endblock body %}

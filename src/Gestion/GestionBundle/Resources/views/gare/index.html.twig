@@ -1,0 +1,37 @@
+{#% extends 'base.html.twig' %#}
+{# extends non utilisé ici#}
+
+{% block bodygares %}
+    <div class="background-white col-md-7 p20 pull-right">
+        <h3 class="page-title">Liste des gares</h3>
+
+        <table class="table tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+            <thead>
+                <tr>
+                    <th>Nom de la Gare</th>
+                    <th>Ville</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for gare in gares %}
+                    <tr>
+                        <td>{{ gare.nomGare }}</td>
+                        <td>{{ gare.ville }}</td>
+                        <td>{{ gare.description }}</td>
+                        <td>
+                            <a href="{{ path('gare_edit', { 'id': gare.id }) }}">Modifier</a>
+                            <a href="{{ path('gare_show', { 'id': gare.id }) }}">show</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="clearfix">&nbsp;</div>
+        <a class="btn btn-success" href="{{ path('gare_new') }}">Nouvelle gare</a>
+
+    </div>
+{% endblock %}

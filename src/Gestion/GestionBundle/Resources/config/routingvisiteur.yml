@@ -1,0 +1,47 @@
+gestion_home:
+    path:     /
+    defaults: { _controller: "GestionBundle:Home:index" }
+    methods:  GET
+
+gestion_page:
+    path:     /P/{page}
+    defaults: { _controller: "GestionBundle:Home:page" }
+    methods:  GET
+
+gestion_home_recherche:
+    path:     /recherche
+    defaults: { _controller: "GestionBundle:Home:recherche" }
+    methods:  POST
+
+objects_loader:
+    path:     /objects/loader/{idelement}/{valselected}
+    defaults: { _controller: "GestionBundle:Home:objectsLoader", idelement:0, valselected:0 }
+    methods:  GET
+    options:
+        expose: true
+
+voyage_result:
+    path:     /recherche/result/{jour_dpt}/{lieuDepart}/{lieuArrivee}
+    defaults: { _controller: "GestionBundle:Voyage:result",jour_dpt:0,lieuDepart:0,lieuArrivee:0}
+    methods:  GET
+
+voyage_urlPayment:
+    path:     /{id}/nbre/{nbrepay}/payment
+    defaults: { _controller: "GestionBundle:Voyage:urlPayment", nbrepay:1 }
+    methods:  GET
+    options:
+        expose: true
+
+transaction_new:
+    path:     /new/{voyage}/{nbrepay}/{op}
+    defaults: { _controller: "GestionBundle:Transaction:new",voyage:0, nbrepay:1, op:none }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+voyage_show_ajax:
+    path:     /{id}/show/ajax
+    defaults: { _controller: "GestionBundle:Voyage:showajax" }
+    methods:  GET
+    options:
+        expose: true

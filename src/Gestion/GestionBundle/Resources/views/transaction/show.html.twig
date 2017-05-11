@@ -1,0 +1,128 @@
+{% extends 'base_visiteur.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-lg-3">                    
+                <div class="sidebar">
+                    <div class="widget">
+                        <h2 class="widgettitle">Détails du voyage</h2>
+
+                        <ul class="menu">
+                            <li>
+                                <a href="#">VOTRE VOYAGE: <br />
+                                    {% if transaction.voyage %}
+                                        <strong style="font-size: 14px;">
+                                            {{ transaction.voyage.lieuDepart|upper  }}
+                                            ▶ 
+                                            {{ transaction.voyage.lieuArrivee|upper  }} 
+                                        </strong>
+                                        <p> Gare de Départ {{ transaction.voyage.gare|capitalize  }} </p>
+                                    {% endif %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Date de départ: <br />
+                                    <strong style="font-size: 14px;">
+                                        {% if transaction.voyage %}                                            
+                                            {% if transaction.voyage.dateVoyage %}{{ transaction.voyage.dateVoyage|date('d/m/Y') }}{% endif %}
+                                            à
+                                            {% if transaction.voyage.heureDepart %}{{ transaction.voyage.heureDepart|date('H:i') }}{% endif %}
+                                        {% endif %}
+                                    </strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Nombre de places & montant: <br />
+                                    {% if transaction.voyage %}
+                                        <strong style="font-size: 14px;">
+                                            Nombre de place: {{ transaction.places  }} <br />
+                                            Prix unitaire: {{ transaction.voyage.prixVoyage|number_format  }} 
+                                        </strong>
+                                    {% endif %}
+                                </a>
+                            </li>
+
+                            <li>
+                             <a href="{{path('gestion_home')}}">
+                        <img src="{{asset('assets/img/logo.png') }}" alt="Logo">
+                        <span>Retour: Cliquez-ici</span>
+                    </a>
+                            </li>
+                        </ul><!-- /.menu -->
+                    </div><!-- /.wifget -->
+
+                </div><!-- /.sidebar -->
+            </div><!-- /.col-* -->
+
+            <div class="col-sm-8 col-lg-9">
+                <div class="content">
+                    <div class="page-title">
+                                <h1>Transaction</h1>
+                     </div><!-- /.page-title -->
+
+                    <div class="posts">
+                        <div class="post">
+                            <div class="post-meta clearfix">
+                                <div style="font-size: 18px;">
+
+
+        <table class="table tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+
+            <tbody>
+                <tr>
+                    <th>Identifiant</th>
+                    <td>{{ transaction.id }}</td>
+                </tr>
+                <tr>
+                    <th>Montant</th>
+                    <td> 
+        <h5><b  style="font-size: 18px; color: #ff8c00;">Montant payé : {{ (transaction.places * transaction.voyage.prixVoyage)|number_format }} F CFA</b></h5>
+                   </td>
+                </tr>
+                <tr>
+                    <th>Réference</th>
+                    <td>{{ transaction.reference }}</td>
+                </tr>
+                <tr>
+                    <th>Places</th>
+                    <td>{{ transaction.places }}</td>
+                </tr>
+                <tr>
+                    <th>Montant</th>
+                    <td>{{ transaction.montant }}</td>
+                </tr>
+                <tr>
+                    <th>Created</th>
+                    <td>{% if transaction.created %}{{ transaction.created|date('Y-m-d') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Info</th>
+                    <td>{{ transaction.info }}</td>
+                </tr>
+                <tr>
+                    <th>Etat</th>
+                    <td>{{ transaction.etat }}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+                                </div>
+
+                            </div><!-- /.post-meta -->
+                        </div><!-- /.post -->
+
+                    </div><!-- /.posts -->
+
+                </div><!-- /.content -->   
+            </div><!-- /.row --> 
+        </div><!-- /.container -->
+    </div><!-- /.container -->
+
+{% endblock %}
+
+
+
+

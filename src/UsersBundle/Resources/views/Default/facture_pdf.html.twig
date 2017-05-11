@@ -1,0 +1,235 @@
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+            
+            body {
+                height: 297mm;/*297*/
+                width: 210mm;
+            }
+            .invoice-box{
+                max-width:800px;
+                margin-left: 50px;
+                padding:30px;
+                font-size:16px;
+                line-height:24px;
+                font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+                color:#555;
+                height: 842px;
+            }
+
+            .invoice-box table{
+                width:100%;
+                line-height:inherit;
+                text-align:left;
+            }
+
+            .invoice-box table td{
+                padding:5px;
+                vertical-align:top;
+            }
+
+            .invoice-box table tr td:nth-child(2){
+                text-align:left;
+            }
+
+            .invoice-box table tr.top table td{
+                padding-bottom:20px;
+            }
+
+            .invoice-box table tr.top table td.title{
+                font-size:45px;
+                line-height:45px;
+                color:#333;
+            }
+
+            .invoice-box table tr.information table td{
+                padding-bottom:40px;
+            }
+
+            .invoice-box table tr.heading td{
+                background:#eee;
+                border-bottom:1px solid #ddd;
+                font-weight:bold;
+            }
+
+            .invoice-box table tr.details td{
+                padding-bottom:20px;
+            }
+
+            .invoice-box table tr.item td{
+                border-bottom:1px solid #eee;
+            }
+
+            .invoice-box table tr.item.last td{
+                border-bottom:none;
+            }
+
+            .invoice-box table tr.total td:nth-child(2){
+                border-top:2px solid #eee;
+                font-weight:bold;
+            }
+            tr{
+                border-bottom: 2px solid #eee !important;
+            }
+
+            @media only screen and (max-width: 600px) {
+                .invoice-box table tr.top table td{
+                    width:100%;
+                    display:block;
+                    text-align:center;
+                }
+
+                .invoice-box table tr.information table td{
+                    width:100%;
+                    display:block;
+                    text-align:center;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="invoice-box">
+            <table cellpadding="0" cellspacing="0">
+                <tr class="top">
+                    <td colspan="5">
+                        <table>
+                            <tr>
+                                <td class="title">
+                                    {#<img src="{{ asset('design/dist/img/logo.png') }}" style="width:130%; max-width:130px;">#}
+                                </td>
+
+                                <td style="text-align: right">
+                                    Abidjan, le {{ 'now'|date('d/m/Y') }}
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr class="information">
+                    <td colspan="5">
+                        <table>
+                            <tr>
+                                <td style="text-align: left">
+                                    <strong>Facture : </strong> {{ entity.numero }}<br />
+                                    <strong>Num. Client :</strong> {{ entity.client.numero }}<br />
+                                    <strong>Contact :</strong> {{ entity.client.telephone }}<br />
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                {# les produits #}
+                {% set totalHT = 0 %}
+                {% set totalTTC = 0 %}
+                {% set totalRemiseOuReduction = 0   %}
+
+                {% if entity.detailsProduits|length != 0 %}
+                    <tr class="heading">
+                        <td width="10%">Réf.</td>
+                        <td width="40%">Désignation</td>
+                        <td>Qté</td>
+                        <td width="20%">Prix HT</td>
+                        <td width="20%">Montant</td>
+                    </tr>
+                    {% for prod in entity.detailsProduits %}
+                        <tr class="item">
+                            <td>{{ prod.refProd }}</td>
+                            <td>{{ prod.libelle }}</td>
+                            <td>{{ prod.quantite }}</td>
+                            <td>{{ prod.prixHT |number_format(0,',',' ')}}</td>
+                            <td>{{(prod.prixHT * prod.quantite)|number_format(0,',',' ')}} </td>
+                        </tr>
+                        {% set totalHT = totalHT + (prod.prixHT * prod.quantite) %}
+                        {#% set totalTTC = totalTTC + (entity.prixproduit * tableauQte[entity.id])*18/100 %#}
+                    {% endfor %}
+
+                    {% if entity.detailsOptions|length != 0 %}
+
+                        <tr class="heading">
+                           <td width="10%"></td>
+                        <td width="40%">Options</td>
+                        <td></td>
+                        <td width="20%"></td>
+                        <td width="20%"></td>
+                        </tr>
+                        {% for opt in entity.detailsOptions %}
+                            <tr class="item">
+                                <td>{{ opt.refOption }}</td>
+                                <td>{{ opt.libelle }}</td>
+                                <td></td>
+                                <td>{{ opt.prixHT |number_format(0,',',' ')}}</td>
+                                <td>{{ opt.prixHT |number_format(0,',',' ')}}</td>
+                            </tr>
+                            {% set totalHT = totalHT + opt.prixHT %}
+                            {#% set totalTTC = totalTTC + (entity.prixproduit * tableauQte[entity.id])*18/100 %#}
+                        {% endfor %}
+                    {% endif %}
+
+
+                    <tr class="vide">
+                        <td colspan="5"> &nbsp; </td>
+                    </tr>
+                     {% if entity.contratLocation %}
+                    <tr class="total">
+                        <td colspan="2"></td>
+                        <td colspan="2" style="text-align: right;font-size: 14px">Caution:</td>
+                        <td>{{ entity.contratLocation.caution|number_format(0,',',' ') }} F CFA</td>
+                        {% set totalHT = totalHT + entity.contratLocation.caution %}
+                    </tr>
+                    {% endif %}
+                    <tr class="total">
+                        <td colspan="2"></td>
+                        <td colspan="2" style="text-align: right;font-size: 14px">Total:</td>
+                        <td>{{ totalHT |number_format(0,',',' ')}} F CFA</td>
+                    </tr>
+
+                    {% if  entity.reduction > 0%}
+                        <tr class="total">
+                            <td colspan="2"></td>
+                            <td colspan="2" style="text-align: right;font-size: 14px">Reduction :</td>
+                            <td> - {{ entity.reduction |number_format(0,',',' ')}} F CFA</td>
+                            {% set totalRemiseOuReduction = totalRemiseOuReduction + entity.reduction   %}
+                        </tr>
+                    {% endif %}
+                    <tr class="total">
+                        <td colspan="2"></td>
+                        <td colspan="2" style="text-align: right;font-size: 14px">Remise ({{ entity.remise }} %):</td>
+                        {% set totalRemiseOuReduction = totalRemiseOuReduction  + (totalHT * entity.remise/100) %}
+                        <td>- {{ totalRemiseOuReduction |number_format(0,',',' ')}} F CFA</td>
+                    </tr>
+                    <tr class="total">
+                        <td colspan="2"></td>
+                        <td colspan="2" style="text-align: right;font-size: 14px">Total après rémise:</td>
+                        <td style="bottom: 0">{{ (totalHT - totalRemiseOuReduction)|number_format(0,',',' ')}} F CFA</td>
+                    </tr>
+                    <tr class="total">
+                        <td colspan="2"></td>
+                        <td colspan="2" style="text-align: right;font-size: 14px">TVA ({{ entity.tvafacture |number_format(0,',',' ')}} %):</td>
+                        <td>{{ (( totalHT - totalRemiseOuReduction) * entity.tvafacture/100) |number_format(0,',',' ')}} F CFA</td>
+                    </tr>
+                    <tr class="total">
+                        <td colspan="2"></td>
+                        <td colspan="2" style="text-align: right;font-size: 14px">Total TTC:</td>
+                        <td>{{ entity.totalFacture |number_format(0,',',' ')}} F CFA</td>
+                    </tr>
+                    <tr class="total">
+                        <td colspan="5"><br>Arrêtée la présente facture à la somme de : <strong>{{ entity.totalFacture |number_format(0,',',' ')}} F CFA</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td colspan="1" style="font-size: 10px"><u><strong>LA COMPTABILITE</strong></u></td>
+                    </tr>
+
+                {% endif %}
+            </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,154 @@
+{% extends 'base_visiteur.html.twig' %}
+
+{# le header  #}
+{% block header %}
+    {% include "GestionBundle::home/header_home.html.twig" %}
+{% endblock %}
+{# le contenu  #}
+{% block body %}
+    {% include "::sections_app/banniere.html.twig" %}
+
+    <div class="container">
+        <div class="block background-white fullwidth pt0 pb0">
+            <div class="partners">
+                <a href="#">
+                    <img src="{{asset('assets/img/partner-1.jpg') }}" alt="">
+                </a>
+
+                <a href="#">
+                    <img src="{{asset('assets/img/partner-2.jpg') }}" alt="">
+                </a>
+
+                <a href="#">
+                    <img src="{{asset('assets/img/partner-3.jpg') }}" alt="">
+                </a>
+
+                <a href="#">
+                    <img src="{{asset('assets/img/partner-4.jpg') }}" alt="">
+                </a>
+
+                <a href="#">
+                    <img src="{{asset('assets/img/partner-5.jpg') }}" alt="">
+                </a>
+            </div><!-- /.partners -->
+        </div>
+        <div class="page-header" style="margin: 0;">
+            <h2>Gagnez du temps dans la réservation de votre ticket.</h2>
+            <p style="font-size: 18px; margin: 0; color: rgba(54, 54, 54, 0.9);">
+                Plus rapide et plus sûre.
+            </p>
+        </div><!-- /.page-header -->
+
+        <div class="block background-white fullwidth mt30">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="posts">
+                        <div class="post">
+                            <div class="box-icon" style="color: #c6af5c;">
+                                <i class="fa fa-life-ring"></i>
+                            </div><!-- /.box-icon -->
+
+                            <div class="post-content p20">
+                                <h2>Votre place garantie</h2>
+                                <p>
+                                    Soyez le VIP de votre prochain trajet en car! 
+                                    Fini les heures d’attentes, les bousculades et le brouhaha à la gare.
+                                    Achetez votre place depuis internet avec votre pc ou votre téléphone, votre place est garantie.
+                                </p>
+                            </div><!-- /.post-content -->
+                        </div><!-- /.post -->
+
+
+                        <div class="post">
+                            <div class="box-icon" style="color: #c6af5c;">
+                                <i class="fa fa-flask"></i>
+                            </div><!-- /.box-icon -->
+
+                            <div class="post-content p20">
+                                <h2>Une équipe pour vous accompagner</h2>
+                                <p>
+                                    À la gare, repérez les agents. 
+                                    Ils s’assurent de votre montée dans le car, du respect de la disponibilité de votre place et veillent à ce que vos bagages vous suivent jusqu’à destination.
+
+                                </p>
+                            </div><!-- /.post-content -->
+                        </div><!-- /.post -->
+
+
+                        <div class="post">
+                            <div class="box-icon" style="color: #c6af5c;">
+                                <i class="fa fa-thumbs-o-up"></i>
+                            </div><!-- /.box-icon -->
+
+                            <div class="post-content p20">
+                                <h2>Un choix des transporteurs</h2>
+                                <p>Check it out, y'all. Everyone who was invited is here. Well, thanks to the Internet, I'm now bored with. Is there a place on th...</p>
+                            </div><!-- /.post-content -->
+                        </div><!-- /.post -->
+                    </div><!-- /.posts -->
+
+                </div><!-- /.col-* -->
+
+                <div class="col-sm-6">
+               
+                    <div class="events">
+                        <div class="event">
+                            <div class="event-date">
+                                <span class="day">28</span>
+                                <span class="month">APR</span>
+                            </div><!-- /.event-date -->
+                            <div class="event-content">
+                                <h2>Abidjan => Bouaké</h2>
+                                <p>Départ de Yopougon.</p>
+                                <div class="event-time"><i class="fa fa-clock-o"></i> 8:00PM - 11:00PM</div><!-- /.event-time -->
+                            </div><!-- /.event-content -->
+                        </div><!-- /.event -->
+
+                        <div class="event">
+                            <div class="event-date">
+                                <span class="day">18</span>
+                                <span class="month">OCT</span>
+                            </div><!-- /.event-date -->
+
+                            <div class="event-content">
+                                <h2>Fusce pulvinar quam odio</h2>
+                                <p>Nulla ac lectus posuere, rhoncus dui sed, finibus tellus. Proin enim mi.</p>
+                                <div class="event-time"><i class="fa fa-clock-o"></i> 12:00AM - 2:00PM</div><!-- /.event-time -->
+                            </div><!-- /.event-content -->
+                        </div><!-- /.event -->
+
+                        <div class="event">
+                            <div class="event-date">
+                                <span class="day">22</span>
+                                <span class="month">FEB</span>
+                            </div><!-- /.event-date -->
+
+                            <div class="event-content">
+                                <h2>Cras libero justo, fringilla in quam</h2>
+                                <p>Nulla ac lectus posuere, rhoncus dui sed, finibus tellus. Proin enim mi.</p>
+                                <div class="event-time"><i class="fa fa-clock-o"></i> 10:00AM - 6:00PM</div><!-- /.event-time -->
+                            </div><!-- /.event-content -->
+                        </div><!-- /.event -->
+
+                        <div class="event">
+                            <div class="event-date">
+                                <span class="day">28</span>
+                                <span class="month">AUG</span>
+                            </div><!-- /.event-date -->
+
+                            <div class="event-content">
+                                <h2>Phasellus vitae velit sit</h2>
+                                <p>Nulla ac lectus posuere, rhoncus dui sed, finibus tellus. Proin enim mi.</p>
+                                <div class="event-time"><i class="fa fa-clock-o"></i> 8:00PM - 10:00PM</div><!-- /.event-time -->
+                            </div><!-- /.event-content -->
+                        </div><!-- /.event -->
+                    </div><!-- /.events -->
+
+                </div><!-- /.col-* -->
+            </div><!-- /.row -->
+        </div><!-- /.block -->
+
+
+    </div><!-- /.container -->
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block body %}
+	 <div class="col-sm-4 col-sm-offset-4">
+<div class="panel">
+                <div class="panel-body container"><center>
+                        <p><b>BIENVENUE</b></p>
+    <p><b>{{ 'profile.show.username'|trans }}</b>:<br/> {{ user.username }}</p>
+    <p><b>{{ 'profile.show.email'|trans }}</b>:<br/> {{ user.email }}</p></center>
+
+	{#<a class="btn btn-primary" href="{{path('homepage')}}"> PAGE ACCUEIL </a>#}
+
+	</div>
+</div></div>
+{% endblock %}
+

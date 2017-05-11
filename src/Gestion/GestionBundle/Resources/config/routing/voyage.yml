@@ -1,0 +1,24 @@
+voyage_index:
+    path:     /
+    defaults: { _controller: "GestionBundle:Voyage:index" }
+    methods:  GET
+
+voyage_show:
+    path:     /{id}/show
+    defaults: { _controller: "GestionBundle:Voyage:show" }
+    methods:  GET
+
+voyage_new:
+    path:     /new
+    defaults: { _controller: "GestionBundle:Voyage:new" }
+    methods:  [GET, POST]
+
+voyage_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GestionBundle:Voyage:edit" }
+    methods:  [GET, POST]
+
+voyage_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GestionBundle:Voyage:delete" }
+    methods:  DELETE

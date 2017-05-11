@@ -1,0 +1,41 @@
+gestion_compagnie:
+    resource: "@GestionBundle/Resources/config/routing/compagnie.yml"
+    prefix:   /compagnie
+
+gestion_ville:
+    resource: "@GestionBundle/Resources/config/routing/ville.yml"
+    prefix:   /ville
+
+gestion_gare:
+    resource: "@GestionBundle/Resources/config/routing/gare.yml"
+    prefix:   /gare
+
+gestion_comptevoyageur:
+    resource: "@GestionBundle/Resources/config/routing/comptevoyageur.yml"
+    prefix:   /comptevoyageur
+
+gestion_conducteur:
+    resource: "@GestionBundle/Resources/config/routing/conducteur.yml"
+    prefix:   /conducteur
+
+gestion_transaction:
+    resource: "@GestionBundle/Resources/config/routing/transaction.yml"
+    prefix:   /transaction
+
+gestion_vehicule:
+    resource: "@GestionBundle/Resources/config/routing/vehicule.yml"
+    prefix:   /vehicule
+
+gestion_voyage:
+    resource: "@GestionBundle/Resources/config/routing/voyage.yml"
+    prefix:   /voyage
+
+gestion_voyageur:
+    resource: "@GestionBundle/Resources/config/routing/voyageur.yml"
+    prefix:   /voyageur
+
+gestion_home_admin:
+    path:     /home
+    defaults: { _controller: "GestionBundle:Home:homeAdmin" }
+    methods:  GET
+

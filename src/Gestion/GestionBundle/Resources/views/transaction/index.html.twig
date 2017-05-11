@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="background-white p20 mb50">
+        <h2 class="page-title">Liste des transactions</h2>
+
+        <table class="table tableliste tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+            <thead>
+                <tr>
+                    <th>Reference</th>
+                    <th>PU</th>
+                    <th>Montant</th>
+                    <th>Places</th>
+                    <th>Operateur</th>
+                    <th>Created</th>
+                    <th>Info</th>
+                    <th>Etat</th>
+                    <th>SMS OK</th>
+                    <th>EMAIL OK</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                 {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.reference }}</td>
+                    <td>{{ transaction.pu }}</td>
+                    <td>{{ transaction.montant }}</td>
+                    <td>{{ transaction.places }}</td>
+                    <td>{{ transaction.operateur }}</td>
+                    <td>{% if transaction.created %}{{ transaction.created|date('Y-m-d') }}{% endif %}</td>
+                    <td>{{ transaction.info }}</td>
+                    <td>{{ transaction.etat }}</td>
+                    <td>{{ transaction.testSMSSend }}</td>
+                    <td>{{ transaction.testEmailSend }}</td>
+                    <td>
+                                <a href="{{ path('transaction_show', { 'id': transaction.id }) }}">show</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+
+{% endblock %}

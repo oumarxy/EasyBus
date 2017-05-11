@@ -1,0 +1,43 @@
+{#% extends 'base.html.twig' %#}
+{# extends non utilisé ici#}
+{% block bodyconducteurs %}
+
+     <div class="background-white p20 mb50">
+        <h2 class="page-title">Liste des conducteurs</h2>
+
+        <table class="table tableliste tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Enrégistré le</th>
+                <th>Contact</th>
+                <th>Permis</th>
+                <th>Actions</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                 {% for conducteur in conducteurs %}
+            <tr>
+                <td>{{ conducteur.nom|capitalize }}</td>
+                <td>{{ conducteur.prenoms|capitalize }}</td>
+                <td>{{ conducteur.email }}</td>
+                <td>{% if conducteur.created %}{{ conducteur.created|date('d/m/Y') }}{% endif %}</td>
+                <td>{{ conducteur.contact }}</td>
+                <td>{{ conducteur.permis }}</td>
+                <td>
+                            <a href="{{ path('conducteur_show', { 'id': conducteur.id }) }}">Voir</a>
+                            <a href="{{ path('conducteur_edit', { 'id': conducteur.id }) }}">Editer</a>
+                </td>
+            </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+            <a class="btn btn-success" href="{{ path('conducteur_new') }}">Nouveau conducteur</a>
+
+    </div>
+
+{% endblock %}

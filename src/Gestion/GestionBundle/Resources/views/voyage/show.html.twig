@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Voyage</h1>
+    <div class="p20 mb20 col-md-8">
+<table class="table  tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+            <tbody>
+                <tr>
+                    <th>Date voyage</th>
+                    <td>{% if voyage.dateVoyage %}{{ voyage.dateVoyage|date('d/m/Y') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Heure départ</th>
+                    <td>{% if voyage.heureDepart %}{{ voyage.heureDepart|date('H:i') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Heure arrivée</th>
+                    <td>{% if voyage.heureArrivee %}{{ voyage.heureArrivee|date('H:i') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Lieu départ</th>
+                    <td>{{ voyage.lieuDepart }}</td>
+                </tr>
+                <tr>
+                    <th>Lieu arrivée</th>
+                    <td>{{ voyage.lieuArrivee }}</td>
+                </tr>
+                <tr>
+                    <th>Places disponibles</th>
+                    <td>{{ voyage.placesDispo }}</td>
+                </tr>
+                <tr>
+                    <th>Prix voyage</th>
+                    <td>{{ voyage.prixVoyage }}</td>
+                </tr>
+                <tr>
+                    <th>Enrégistré le</th>
+                    <td>{% if voyage.created %}{{ voyage.created|date('d/m/Y') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <div class="clearfix">  </div>
+    <a class="btn btn-primary"  href="{{ path('voyage_index') }}">Liste des voyages</a>
+
+    <a class="btn btn-success" href="{{ path('voyage_edit', { 'id': voyage.id }) }}">Modifier</a>
+
+{% endblock %}

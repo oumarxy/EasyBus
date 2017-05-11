@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+          <div class="background-white p20 mb50">
+        <h2 class="page-title">Liste des voyageurs</h2>
+
+        <table class="table tableliste tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+            <thead>
+                <tr>
+                  <th>Nom</th>
+                <th>Prenom</th>
+                <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                 {% for voyageur in voyageurs %}
+                <tr>
+                    <td><a href="{{ path('voyageur_show', { 'id': voyageur.id }) }}">{{ voyageur.id }}</a></td>
+                    <td>{{ voyageur.nom }}</td>
+                    <td>{{ voyageur.prenom }}</td>
+                    <td>
+                                <a href="{{ path('voyageur_show', { 'id': voyageur.id }) }}">show</a>
+                                <a href="{{ path('voyageur_edit', { 'id': voyageur.id }) }}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+            <a class="btn btn-success" href="{{ path('voyageur_new') }}">Nouveau voyageur</a>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="page-title" style="margin-top: 10px !important;margin-bottom: 20px !important;">
+        <h1>Réinitialisation</h1>
+    </div><!-- /.page-title -->   
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+    <div class="form-group form-material floating">
+        {% if invalid_username is defined %}
+            <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</p>
+        {% endif %}
+        <label for="username">{{ 'resetting.request.username'|trans }}</label>
+        <input type="text"  class="form-control" id="username" name="username" required="required" placeholder="Votre Numéro Cellulaire"/>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-danger btn-block">{{ 'resetting.request.submit'|trans }}</button>
+    </div>
+</form>

@@ -1,0 +1,66 @@
+{% block main_sidebar %}
+    <div class="sidebar-secondary-admin">
+        <ul>
+            <li class="active">
+                <a href="{{path('gestion_home_admin')}}">
+                    <span class="icon"><i class="fa fa-tachometer"></i></span>
+                    <span class="title">Tableau de bord</span>
+                    <span class="subtitle">Gérez la plateforme EasyBus </span>
+                </a>
+            </li>
+
+            <li >
+                <a href="{{path('voyage_index')}}">
+                    <span class="icon"><i class="fa fa-car"></i></span>
+                    <span class="title">Voyage </span>
+                    <span class="subtitle">Programmez un voyage</span>
+                </a>
+            </li>
+            <li >
+                <a href="{{path('transaction_index')}}">
+                    <span class="icon"><i class="fa fa-credit-card"></i></span>
+                    <span class="title">Ventes de tickets</span>
+                    <span class="subtitle">Trouver une transaction </span>
+                </a>
+            </li>
+
+             <li >
+                <a href="{{path('gare_index')}}">
+                    <span class="icon"><i class="fa fa-i-cursor "></i></span>
+                    <span class="title">Villes & Gares</span>
+                </a>
+            </li>
+
+            <li >
+                <a href="{{path('conducteur_index')}}">
+                    <span class="icon"><i class="fa fa-i-cursor "></i></span>
+                    <span class="title">Conducteurs & Véhicules</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{path('utilisateur_index')}}">
+                    <span class="icon"><i class="fa fa-users"></i></span>
+                    <span class="title">Utilisateurs </span>
+                    <span class="subtitle">Gérez les comptes</span>
+                </a>
+            </li>
+
+            <li >
+                <a href="{{path('compagnie_index')}}">
+                    <span class="icon"><i class="fa fa-i-cursor"></i></span>
+                    <span class="title">Compagnies </span>
+                    <span class="subtitle">Gérez les compagnies</span>
+                </a>
+            </li>
+           <!-- <li >
+                <a href="">
+                    <span class="icon"><i class="fa fa-bell"></i></span>
+                    <span class="title">Notifications <span class="notification">2</span></span>
+                    <span class="subtitle">Alert messages</span>
+                </a>
+            </li>-->
+        </ul>
+    </div><!-- /.sidebar-secondary-admin -->
+
+{% endblock %}

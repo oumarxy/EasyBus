@@ -1,0 +1,65 @@
+{% block banniere %}
+
+    <div class="mt-150">
+        <div class="hero-image">
+            <div class="hero-image-inner" style="background-image: url('{{asset('assets/img/route.jpg') }}');">
+                <div class="hero-image-content">
+                    <div class="container">
+                        <h1>Gagnez du temps</h1>
+                        <p>Le meilleur moyen d'acheter vos billets de cars. <br> 
+                            La plateforme d’achat et de réservation de tickets de <strong> CARS </strong> à distance.</p>
+
+                        <a href="#" class="btn btn-primary btn-lg">Voir plus</a>
+                        <a href="#" class="btn btn-secondary btn-lg"><i class="fa fa-user"></i> S'inscrire</a>
+                    </div><!-- /.container -->
+                </div><!-- /.hero-image-content -->
+
+                <div class="hero-image-form-wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-6 col-lg-4 col-lg-offset-7">
+
+                                {{ form_start(rechercheForm) }}
+                                <h2>Prêt à partir ?</h2>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label for="villedepartkey" class="input-group-addon hero-icons">
+                                            <i class="fa fa-location-arrow"></i>
+                                        </label>
+                                        {{ form_widget(rechercheForm.lieuDepart, {'id':'villedepartkey','attr':
+        {'class':'form-control suivielt selectpicker',  'required':true, 'data-none-results-text':'Aucun élément trouvé','title':'Départ ...','data-live-search':'true'}}) }}
+
+                                    </div><!-- /.form-group -->
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label for="villearriveekey" class="input-group-addon  hero-icons">
+                                            <i class="fa fa-map-marker"></i>
+                                        </label>
+                                        {{ form_widget(rechercheForm.lieuArrivee, {'id':'villearriveekey','attr':
+        {'class':'form-control selectpicker',  'required':true,'data-none-results-text':'Aucun élément trouvé','title':'Arrivée ...','data-live-search':'true'}}) }}
+
+                                    </div><!-- /.form-group -->
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label for="calendar" class="input-group-addon hero-icons">
+                                            <i class="fa fa-calendar"></i>
+                                        </label>
+                                        {{ form_widget(rechercheForm.jourdepart, {'id':'calendar','attr':
+        {'class':'form-control datepicker','placeholder':'Date','value':'now'|date('d/m/Y')}}) }}
+
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">RECHERCHER</button>
+                                {{ form_end(rechercheForm) }}
+                            </div><!-- /.col-* -->
+                        </div><!-- /.row -->
+                    </div><!-- /.container -->
+                </div><!-- /.hero-image-form-wrapper -->
+            </div><!-- /.hero-image-inner -->
+        </div><!-- /.hero-image -->
+
+    </div>
+
+{% endblock  %}

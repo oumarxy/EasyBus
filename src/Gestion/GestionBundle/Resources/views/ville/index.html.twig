@@ -1,0 +1,36 @@
+{#% extends 'base.html.twig' %#}
+{# extends non utilisé ici#}
+
+{% block bodyville %}
+
+      <div class="background-white p20 col-md-4">
+        <h3 class="page-title">Liste des villes</h3>
+
+        <table class="table table-striped mb1" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+            <thead>
+                <tr>
+                   <th>Id</th>
+                <th>Ville</th>
+                <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                 {% for ville in villes %}
+            <tr>
+                <td><a href="{{ path('ville_show', { 'id': ville.id }) }}">{{ ville.id }}</a></td>
+                <td>{{ ville.nomVille }}</td>
+                <td>
+                            <a href="{{ path('ville_edit', { 'id': ville.id }) }}">Editer</a>
+                </td>
+            </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+            
+            <div class="clearfix"> &nbsp;</div>
+            <a class="btn btn-success" href="{{ path('ville_new') }}">Nouvelle ville</a>
+
+    </div>
+{% endblock %}

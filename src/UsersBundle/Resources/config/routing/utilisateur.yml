@@ -1,0 +1,29 @@
+utilisateur_index:
+    path:     /
+    defaults: { _controller: "UsersBundle:Utilisateur:index" }
+    methods:  GET
+    
+utilisateur_pdf:
+    path:     /pdf
+    defaults: { _controller: "UsersBundle:Utilisateur:pdf" }
+    methods:  GET
+
+utilisateur_show:
+    path:     /{id}/show
+    defaults: { _controller: "UsersBundle:Utilisateur:show" }
+    methods:  [GET, POST]
+
+utilisateur_new:
+    path:     /new
+    defaults: { _controller: "UsersBundle:Utilisateur:new"}
+    methods:  [GET, POST]
+
+utilisateur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UsersBundle:Utilisateur:edit" }
+    methods:  [GET, POST]
+
+utilisateur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UsersBundle:Utilisateur:delete" }
+    methods:  DELETE

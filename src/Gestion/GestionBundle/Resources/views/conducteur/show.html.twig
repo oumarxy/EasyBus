@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Conducteur</h1>
+  <div class="p20 mb50 col-md-8">
+   
+        <table class="table tablesaw table-striped mb0" data-tablesaw-mode="swipe" data-tablesaw-mode-switch
+               data-tablesaw-minimap>
+        <tbody>
+           
+            <tr>
+                <th>Nom</th>
+                <td>{{ conducteur.nom|capitalize }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ conducteur.prenoms|capitalize }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ conducteur.email }}</td>
+            </tr>
+           
+            <tr>
+                <th>Contact</th>
+                <td>{{ conducteur.contact }}</td>
+            </tr>
+            <tr>
+                <th>Date de naissance</th>
+                <td>{% if conducteur.dateNaissance %}{{ conducteur.dateNaissance|date('d/m/Y') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lieu de naissance</th>
+                <td>{{ conducteur.lieuDeNaissance }}</td>
+            </tr>
+            <tr>
+                <th>Permis</th>
+                <td>{{ conducteur.permis }}</td>
+            </tr>
+             <tr>
+                <th>Enrégistré le</th>
+                <td>{% if conducteur.created %}{{ conducteur.created|date('d/m/Y') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ conducteur.path }}</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+             <div class="p20 col-md-4">
+                 image ici
+             </div>
+            <div class="clearfix"> &nbsp; </div>
+            <a class="btn btn-primary"  href="{{ path('conducteur_index') }}">Liste des conducteurs</a>
+
+            <a class="btn btn-success" href="{{ path('conducteur_edit', { 'id': conducteur.id }) }}">Modifier</a>
+    
+{% endblock %}

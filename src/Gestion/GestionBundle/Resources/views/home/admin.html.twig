@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="statusbox">
+                                <h2>Ventes Aujourd'hui</h2>
+                                <div class="statusbox-content">
+                                    <strong>250</strong>
+                                    <span>Updated 27/04/2015</span>
+                                </div><!-- /.statusbox-content -->
+
+                                <div class="statusbox-actions">
+                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                    <a href="#"><i class="fa fa-bar-chart"></i></a>
+                                    <a href="#"><i class="fa fa-share-alt"></i></a>
+                                </div><!-- /.statusbox-actions -->
+                            </div><!-- /.statusbox -->
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="statusbox">
+                                <h2>Ventes du mois </h2>
+                                <div class="statusbox-content">
+                                    <strong>1320</strong>
+                                    <span>Updated 27/04/2015</span>
+                                </div><!-- /.statusbox-content -->
+
+                                <div class="statusbox-actions">
+                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                    <a href="#"><i class="fa fa-bar-chart"></i></a>
+                                    <a href="#"><i class="fa fa-share-alt"></i></a>
+                                </div><!-- /.statusbox-actions -->
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+                </div><!-- /.col-* -->
+
+                <div class="col-sm-12 col-lg-6">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="statusbox">
+                                <h2>La ligne Prisée aujourd'hui</h2>
+                                <div class="statusbox-content">
+                                    <strong>14,800</strong>
+                                    <span>Updated 27/04/2015</span>
+                                </div><!-- /.statusbox-content -->
+
+                                <div class="statusbox-actions">
+                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                    <a href="#"><i class="fa fa-bar-chart"></i></a>
+                                    <a href="#"><i class="fa fa-share-alt"></i></a>
+                                </div><!-- /.statusbox-actions -->
+                            </div><!-- /.statusbox -->
+                        </div><!-- /.col-* -->
+
+                        <div class="col-sm-6">
+                            <div class="statusbox">
+                                <h2>La ligne Prisée du mois</h2>
+                                <div class="statusbox-content">
+                                    <strong>12,800</strong>
+                                    <span>Updated 27/04/2015</span>
+                                </div><!-- /.statusbox-content -->
+
+                                <div class="statusbox-actions">
+                                    <a href="#"><i class="fa fa-eye"></i></a>
+                                    <a href="#"><i class="fa fa-bar-chart"></i></a>
+                                    <a href="#"><i class="fa fa-share-alt"></i></a>
+                                </div><!-- /.statusbox-actions -->
+                            </div><!-- /.statusbox -->
+                        </div><!-- /.col-* -->
+                    </div><!-- /.row -->
+                </div><!-- /.col-* -->
+            </div><!-- /.row -->
+
+            <div class="row">
+
+                <div class="col-sm-12">  
+                    <form class="filter" method="post" action="#">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Keyword" class="form-control">
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group">
+                                    <select class="form-control" title="Select Location">
+                                        <option>Bronx</option>
+                                        <option>Brooklyn</option>
+                                        <option>Manhattan</option>
+                                        <option>Staten Island</option>
+                                        <option>Queens</option>
+                                    </select>
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group">
+                                    <select class="form-control" title="Select Category">
+                                        <option value="">Automotive</option>
+                                        <option value="">Jobs</option>
+                                        <option value="">Nightlife</option>
+                                        <option value="">Services</option>
+                                    </select>
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+                        </div><!-- /.row -->
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="filter-actions">
+                                    <a href="#"><i class="fa fa-close"></i> Reset Filter</a>
+                                    <a href="#"><i class="fa fa-save"></i> Save Search</a>
+                                </div><!-- /.filter-actions -->
+                            </div><!-- /.col-* -->
+
+                            <div class="col-sm-4">
+                                <button type="submit" class="btn btn-primary">Rechercher une transaction </button>
+                            </div><!-- /.col-* -->
+                        </div><!-- /.row -->
+                    </form>
+
+
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.col-* -->
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+compagnie_index:
+    path:     /
+    defaults: { _controller: "GestionBundle:Compagnie:index" }
+    methods:  GET
+
+compagnie_show:
+    path:     /{id}/show
+    defaults: { _controller: "GestionBundle:Compagnie:show" }
+    methods:  GET
+
+compagnie_new:
+    path:     /new
+    defaults: { _controller: "GestionBundle:Compagnie:new" }
+    methods:  [GET, POST]
+
+compagnie_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GestionBundle:Compagnie:edit" }
+    methods:  [GET, POST]
+
+compagnie_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GestionBundle:Compagnie:delete" }
+    methods:  DELETE

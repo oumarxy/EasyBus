@@ -1,0 +1,56 @@
+{% block footer %}
+     <!-- Footer -->
+    <footer class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>A Propos de Easy Bus</h2>
+                    <p>
+                        Une plateforme d’achats et de réservation 
+                        de tickets de cars par paiement mobile
+                        depuis un PC connecté à internet.
+                    </p>
+                </div><!-- /.col-* -->
+
+                <div class="col-sm-4">
+                    <h2>Information Contact </h2>
+
+                    <p>
+                        Abidjan, Deux plateau  Avenue 13, Côte d’ivoire<br>
+                        +225 58-57-32-90, <a href="#">infos@easybus.com</a>
+                    </p>
+                </div><!-- /.col-* -->
+
+                <div class="col-sm-4">
+                    <h2>Restez  Connectés</h2>
+
+                    <ul class="social-links nav nav-pills">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    </ul><!-- /.header-nav-social -->
+                </div><!-- /.col-* -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.footer-top -->
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-left">
+                &copy; 2016 All rights reserved. <a href="#">Easy Bus</a>.
+            </div><!-- /.footer-bottom-left -->
+
+            <div class="footer-bottom-right">
+                <ul class="nav nav-pills">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Travels</a></li>
+                    <li><a href="{{path('gestion_page',{'page':'termes-conditions'}) }}">Terms &amp; Conditions</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul><!-- /.nav -->
+            </div><!-- /.footer-bottom-right -->
+        </div><!-- /.container -->
+    </div>
+</footer><!-- /.footer -->
+
+{% endblock footer %}

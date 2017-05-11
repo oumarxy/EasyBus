@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="background-whitte p20 mb50">
+        <h4> Modification utilisateur </h4>
+        {{ form_start(edit_form) }}
+
+        <div class="col-sm-6">
+            {{ form_row(edit_form.username, {'attr':
+                                        {'class':'form-control'}, 'label':'login','id':'loginid' } ) }}
+            {{ form_row(edit_form.nom) }}
+            {{ form_row(edit_form.prenoms) }}
+            {{ form_row(edit_form.habitation) }}
+            {% if utilisateur.enabled %}
+                {{ form_widget(edit_form.enabled, {'attr':
+                                        {'class':'form-control','checked':true, 'required':false},'type':'checkbox' } ) }}
+            {% else %}
+                {{ form_widget(edit_form.enabled, {'attr':
+                                        {'class':'form-control', 'required':false}, 'type':'checkbox' } ) }}
+            {% endif %}
+            {{form_label(edit_form.enabled) }}
+        </div>
+        <div class="col-sm-6">
+            {{ form_row(edit_form.compagnie) }}
+            {{ form_row(edit_form.tel1) }}
+            {{ form_row(edit_form.tel2) }}
+            {{ form_row(edit_form.email) }}
+
+            <button type="submit" class="btn btn-primary">Valider</button>
+            <a href="{{ path('utilisateur_index') }}" class="btn btn-danger">Retour à la liste</a>
+
+        </div>
+        {{ form_end(edit_form, {'render_rest': true}) }}
+
+    </div>
+
+{% endblock %}
+
+

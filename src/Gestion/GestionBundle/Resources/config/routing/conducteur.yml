@@ -1,0 +1,24 @@
+conducteur_index:
+    path:     /
+    defaults: { _controller: "GestionBundle:Conducteur:index" }
+    methods:  GET
+
+conducteur_show:
+    path:     /{id}/show
+    defaults: { _controller: "GestionBundle:Conducteur:show" }
+    methods:  GET
+
+conducteur_new:
+    path:     /new
+    defaults: { _controller: "GestionBundle:Conducteur:new" }
+    methods:  [GET, POST]
+
+conducteur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GestionBundle:Conducteur:edit" }
+    methods:  [GET, POST]
+
+conducteur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GestionBundle:Conducteur:delete" }
+    methods:  DELETE

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="background-whitte mb20">
+        <h4>Les utilisateurs </h4>
+        <div class="padding-bottom-12 padding-10">
+            <a href="{{ path('utilisateur_new') }}" class="btn btn-success">
+                Nouveau
+            </a>
+        </div>
+        <div class="clearfix">&nbsp;</div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Login</th>
+                    <th>Nom</th>
+                    <th>Prénoms</th>
+                    <th>Compagnie</th>
+                    <th>Habitation</th>
+                    <th>Tel1</th>
+                    <th>Tel2</th>
+                    <th>Email</th>
+                    <th>Etat</th>
+                    <th>Privilège</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for utilisateur in utilisateurs %}
+                    <tr>
+                        <td>{{ utilisateur.username }}</td>
+                        <td>{{ utilisateur.nom }}</td>
+                        <td>{{ utilisateur.prenoms }}</td>
+                        <td>{{ utilisateur.compagnie }}</td>
+                        <td>{{ utilisateur.habitation }}</td>
+                        <td>{{ utilisateur.tel1 }}</td>
+                        <td>{{ utilisateur.tel2 }}</td>
+                        <td>{{ utilisateur.email }}</td>
+                        <td>{% if utilisateur.enabled == 1%} Activé{%else%} désactivé{% endif %}</td>
+                        <td>{% for role in utilisateur.roles %}{% if role != 'ROLE_USER' %} {{ role }} <br /> {% endif %} {% endfor %}</td>
+                        <td>
+                                <i class="fa fa-eye"></i>
+                            <a href="{{ path('utilisateur_show', { 'id': utilisateur.id }) }}">Consulter</a>
+                            &nbsp; &nbsp;
+                            <a href="{{ path('utilisateur_edit', { 'id': utilisateur.id }) }}">Modifier</a>
+
+                        </td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="padding-bottom-12 padding-10">
+            <a href="{{ path('utilisateur_new') }}" class="btn btn-primary">
+                Nouveau
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="background-whitte p20 mb50">
+        <h4> Nouvel utilisateur </h4>
+
+        {{ form_start(form) }}
+
+        <div class="col-sm-6">
+            {{ form_row(form.username, {'attr':
+                                        {'class':'form-control'}, 'label':'login','id':'loginid' } ) }}
+            {{ form_row(form.nom) }}
+            {{ form_row(form.prenoms) }}
+            {{ form_row(form.habitation) }}
+            {{ form_widget(form.enabled, {'attr':
+                                        {'class':'form-control'}, 'checked':'checked', 'required':false,'type':'checkbox' } ) }}
+            {{form_label(form.enabled)}}
+
+        </div>
+        <div class="col-sm-6">
+            {{ form_row(form.compagnie) }}
+            {{ form_row(form.tel1) }}
+            {{ form_row(form.tel2) }}
+            {{ form_row(form.email) }}
+
+            <button type="submit" class="btn btn-primary">Créer</button>
+            <a href="{{ path('utilisateur_index') }}" class="btn btn-danger">Retour à la liste</a>
+        </div>
+        {{ form_end(form, {'render_rest': true}) }}
+
+
+    </div>
+
+{% endblock %}
