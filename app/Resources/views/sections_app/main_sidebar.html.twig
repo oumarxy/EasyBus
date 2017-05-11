@@ -45,7 +45,8 @@
                     <span class="subtitle">Gérez les comptes</span>
                 </a>
             </li>
-
+        {% if is_granted('ROLE_ADMIN')   %}
+                        
             <li >
                 <a href="{{path('compagnie_index')}}">
                     <span class="icon"><i class="fa fa-i-cursor"></i></span>
@@ -53,6 +54,8 @@
                     <span class="subtitle">Gérez les compagnies</span>
                 </a>
             </li>
+         {% endif %}
+                        
            <!-- <li >
                 <a href="">
                     <span class="icon"><i class="fa fa-bell"></i></span>

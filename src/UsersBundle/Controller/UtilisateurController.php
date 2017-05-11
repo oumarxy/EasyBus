@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use UsersBundle\Entity\Utilisateur;
 use UsersBundle\Form\UtilisateurType;
-use UsersBundle\MyClasse\caracteresSpeciaux;
+use UsersBundle\MyService\PasswordGenerator;
 
 /**
  * Utilisateur controller.
@@ -21,8 +21,8 @@ class UtilisateurController extends Controller {
      */
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
-
-        $utilisateurs = $em->getRepository('UsersBundle:Utilisateur')->findAll();
+        
+        $utilisateurs = $em->getRepository('UsersBundle:Utilisateur')->findByCompagnie($this->getUser()->getCompagnie());
         return $this->render('@Users/utilisateur/index.html.twig', array(
                     'utilisateurs' => $utilisateurs,
         ));
@@ -36,21 +36,6 @@ class UtilisateurController extends Controller {
         return new Response($html2pdf->output('recu.pdf'), 200, array('Content-Type' => 'application/pdf'));
     }
 
-    private function passwordCreate() {
-        for ($s = '', $i = 0, $z = strlen($a = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') - 1; $i != 8; $x = rand(0, $z), $s .= $a{$x}, $i++)
-            ;
-        return $s;
-    }
-
-    private function loginCreate($text) {
-        $caracteresSpeciaux = new caracteresSpeciaux();
-        $string = $caracteresSpeciaux->nettoyerChaine($text);
-        $string = trim($string);
-        if (strlen($string) <= 7) {
-            return $string;
-        }
-        return substr($string, 0, 7);
-    }
 
     /**
      * Creates a new Utilisateur entity.
@@ -65,12 +50,15 @@ class UtilisateurController extends Controller {
         if ($form->isSubmitted() && $form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
-            $role = "ROLE_EASY";
+            $role = "ROLE_COMPA";
             $userManager = $this->container->get('fos_user.user_manager');
-
+             if($this->getUser()->getCompagnie()!=null){
+                $utilisateur->setCompagnie($this->getUser()->getCompagnie());
+            }
             $utilisateur->addRole($role);
-            $password = $this->passwordCreate();
-            $utilisateur->setPlainPassword($password);
+            $passwordGenerateur = new PasswordGenerator();
+            $password = $passwordGenerateur->passwordCreate();
+            $utilisateur->setPlainPassword($password); $utilisateur->setPlainPassword("1234567"); // a supprimer
             $userManager->updateUser($utilisateur);
 
             //envoi E-mail
@@ -97,7 +85,7 @@ class UtilisateurController extends Controller {
         if ($request->isMethod('post')) {
             $em = $this->getDoctrine()->getManager();
             $choixroles = $request->request->get('choixrole');
-            $roleTable = array('ROLE_AGENT', 'ROLE_ADMIN');
+            $roleTable = array('ROLE_COMPA','ROLE_ADMIN_COMPA', 'ROLE_ADMIN');
             foreach ($roleTable as $role) {
                 $utilisateur->removeRole($role);
             }

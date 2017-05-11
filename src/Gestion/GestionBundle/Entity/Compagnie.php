@@ -28,6 +28,7 @@ class Compagnie
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
+	
 
     /**
      * @var string
@@ -44,10 +45,11 @@ class Compagnie
     private $contact;
 
 
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -125,7 +127,9 @@ class Compagnie
     {
         return $this->contact;
     }
-    public function __toString(){
-        return $this->getNom();
-    }
+	
+	public function __toString()
+	{
+		return $this->getNom();
+	}
 }

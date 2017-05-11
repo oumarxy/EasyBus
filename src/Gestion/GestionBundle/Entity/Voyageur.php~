@@ -102,4 +102,28 @@ class Voyageur
     }
 
 
+
+    /**
+     * Set compagnie
+     *
+     * @param \Gestion\GestionBundle\Entity\Compagnie $compagnie
+     *
+     * @return Voyageur
+     */
+    public function setCompagnie(\Gestion\GestionBundle\Entity\Compagnie $compagnie = null)
+    {
+        $this->compagnie = $compagnie;
+
+        return $this;
+    }
+
+    /**
+     * Get compagnie
+     *
+     * @return \Gestion\GestionBundle\Entity\Compagnie
+     */
+    public function getCompagnie()
+    {
+        return $this->compagnie;
+    }
 }

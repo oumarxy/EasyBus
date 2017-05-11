@@ -114,4 +114,28 @@ class Ville {
     public function __toString() {
         return $this->getNomVille();
     }
+
+    /**
+     * Set compagnie
+     *
+     * @param \Gestion\GestionBundle\Entity\Compagnie $compagnie
+     *
+     * @return Ville
+     */
+    public function setCompagnie(\Gestion\GestionBundle\Entity\Compagnie $compagnie = null)
+    {
+        $this->compagnie = $compagnie;
+
+        return $this;
+    }
+
+    /**
+     * Get compagnie
+     *
+     * @return \Gestion\GestionBundle\Entity\Compagnie
+     */
+    public function getCompagnie()
+    {
+        return $this->compagnie;
+    }
 }

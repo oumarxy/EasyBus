@@ -20,6 +20,7 @@
                 <td>{{ compagnie.nom }}</td>
                 <td>{{ compagnie.description }}</td>
                 <td>{{ compagnie.contact }}</td>
+                
                 <td>
                     
                             <a href="{{ path('compagnie_show', { 'id': compagnie.id }) }}">Voir</a>
@@ -32,7 +33,7 @@
         </tbody>
     </table>
         <div class="clearfix">&nbsp;</div>
-        <a class="btn btn-success" href="{{ path('compagnie_new') }}">Nouvelle compagnie</a>
+        <a class="btn btn-success" href="{{ path('compagnie_gerant_new') }}">Nouvelle compagnie</a>
 
     </div>
 {% endblock %}

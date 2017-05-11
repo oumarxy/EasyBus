@@ -28,6 +28,13 @@ class Compagnie
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
+	
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="RefGerant", type="integer", unique=true)
+     */
+    private $refGerant;
 
     /**
      * @var string
@@ -44,88 +51,4 @@ class Compagnie
     private $contact;
 
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return Compagnie
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Compagnie
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set contact
-     *
-     * @param string $contact
-     *
-     * @return Compagnie
-     */
-    public function setContact($contact)
-    {
-        $this->contact = $contact;
-
-        return $this;
-    }
-
-    /**
-     * Get contact
-     *
-     * @return string
-     */
-    public function getContact()
-    {
-        return $this->contact;
-    }
-    public function __toString(){
-        return $this->getNom();
-    }
 }

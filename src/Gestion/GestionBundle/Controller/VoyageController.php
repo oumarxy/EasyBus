@@ -44,7 +44,7 @@ class VoyageController extends Controller {
             $created = new \DateTime(date('Y-m-d'));
             $voyage->setCreated($created);
             if($this->getUser()->getCompagnie()!=null){
-                $conducteur->setCompagnie($this->getUser()->getCompagnie());
+                $voyage->setCompagnie($this->getUser()->getCompagnie());
             }
             $em->persist($voyage);
             $em->flush();

@@ -7,6 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Gestion\GestionBundle\Entity\Compagnie;
 use Gestion\GestionBundle\Form\CompagnieType;
+use UsersBundle\Entity\Utilisateur;
+use UsersBundle\Form\UtilisateurGerantType;
+use UsersBundle\MyService\PasswordGenerator;
 
 /**
  * Compagnie controller.
@@ -52,6 +55,40 @@ class CompagnieController extends Controller
             'form' => $form->createView(),
         ));
     }
+     public function gerantAction(Request $request) {
+
+        $utilisateur = new Utilisateur();
+        $form = $this->createForm('UsersBundle\Form\UtilisateurGerantType', $utilisateur);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $role1 = "ROLE_COMPA";
+            $role2 = "ROLE_ADMIN_COMPA";
+            $userManager = $this->container->get('fos_user.user_manager');
+
+            $utilisateur->addRole($role1);
+            $utilisateur->addRole($role2);
+            $passwordGenerateur = new PasswordGenerator();
+            $password = $passwordGenerateur->passwordCreate();
+            $utilisateur->setPlainPassword($password); $utilisateur->setPlainPassword("1234567"); // a supprimer
+            $userManager->updateUser($utilisateur);
+
+            //envoi E-mail
+            $mailer = $this->get('utilisateur_mailer');
+            $mailer->userMailConfirm($utilisateur, $password);
+
+
+            return $this->redirectToRoute('utilisateur_show', array('id' => $utilisateur->getId()));
+        }
+
+        return $this->render('@Gestion/gerant/new.html.twig', array(
+                    'utilisateur' => $utilisateur,
+                    'form' => $form->createView(),
+        ));
+    }
+
 
     /**
      * Finds and displays a Compagnie entity.

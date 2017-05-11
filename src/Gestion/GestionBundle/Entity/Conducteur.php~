@@ -320,4 +320,28 @@ class Conducteur {
     public function __toString() {
         return $this->getNom()." ".$this->getPrenoms();
     }
+
+    /**
+     * Set compagnie
+     *
+     * @param \Gestion\GestionBundle\Entity\Compagnie $compagnie
+     *
+     * @return Conducteur
+     */
+    public function setCompagnie(\Gestion\GestionBundle\Entity\Compagnie $compagnie = null)
+    {
+        $this->compagnie = $compagnie;
+
+        return $this;
+    }
+
+    /**
+     * Get compagnie
+     *
+     * @return \Gestion\GestionBundle\Entity\Compagnie
+     */
+    public function getCompagnie()
+    {
+        return $this->compagnie;
+    }
 }

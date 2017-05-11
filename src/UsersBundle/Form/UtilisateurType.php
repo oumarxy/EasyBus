@@ -23,7 +23,7 @@ class UtilisateurType extends AbstractType {
                 ->add('email')
                 ->add('enabled',  \Symfony\Component\Form\Extension\Core\Type\TextType::class,array('label'=>'Activer/Désactiver'))
                 ->add('username')
-                 ->add('compagnie')
+                // ->add('compagnie')
         ;
         /*
           switch ($this->testtodo) {

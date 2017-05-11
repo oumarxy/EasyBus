@@ -42,7 +42,7 @@ class VilleController extends Controller {
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             if($this->getUser()->getCompagnie()!=null){
-                $conducteur->setCompagnie($this->getUser()->getCompagnie());
+                $ville->setCompagnie($this->getUser()->getCompagnie());
             }
             $em->persist($ville);
             $em->flush();

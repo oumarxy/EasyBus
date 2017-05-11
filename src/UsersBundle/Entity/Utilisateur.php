@@ -25,7 +25,7 @@ class Utilisateur extends BaseUser {
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Gestion\GestionBundle\Entity\Compagnie")
+     * @ORM\ManyToOne(targetEntity="Gestion\GestionBundle\Entity\Compagnie", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $compagnie;

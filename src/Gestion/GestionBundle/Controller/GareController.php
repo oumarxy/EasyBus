@@ -45,7 +45,7 @@ class GareController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             if($this->getUser()->getCompagnie()!=null){
-                $conducteur->setCompagnie($this->getUser()->getCompagnie());
+                $gare->setCompagnie($this->getUser()->getCompagnie());
             }
             $em->persist($gare);
             $em->flush();

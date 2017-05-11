@@ -61,7 +61,7 @@ class TransactionController extends Controller {
             $transaction->setOperateur($op);
             $transaction->setEtat("En cours");
              if($voyage->getCompagnie()!=null){
-                $conducteur->setCompagnie($voyage->getCompagnie());
+                $transaction->setCompagnie($voyage->getCompagnie());
             }
             $em->persist($transaction);
             $em->flush();

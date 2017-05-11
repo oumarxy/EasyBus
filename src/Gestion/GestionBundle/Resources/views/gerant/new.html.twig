@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="background-whitte p20 mb50">
+        
+             <h4> Nouvelle compagnie </h4>
+       
+        {{ form_start(form) }}
+
+        <div class="col-sm-6">
+            {{ form_row(form.compagnie.nom, {'attr':
+                                        {'class':'form-control'}, 'label':'Nom Compagnie' } ) }}
+            {{ form_row(form.compagnie.description) }}
+            {{ form_row(form.compagnie.contact, {'attr':
+                                        {'class':'form-control'}, 'label':'Contact Compagnie' }) }}
+
+            {{ form_row(form.tel1, {'attr':
+                                        {'class':'form-control'}, 'label':'Tél 1 gérant' } ) }}
+            {{ form_row(form.tel2, {'attr':
+                                        {'class':'form-control'}, 'label':'tél 2 gérant' } ) }}
+
+        </div>
+        <div class="col-sm-6">
+             {{ form_row(form.username, {'attr':
+                                        {'class':'form-control'}, 'label':'login gerant','id':'loginid' } ) }}
+            {{ form_row(form.nom, {'attr':
+                                        {'class':'form-control'}, 'label':'Nom du gérant' }) }}
+            {{ form_row(form.prenoms, {'attr':
+                                        {'class':'form-control'}, 'label':'Prénom du gérant' }) }}
+            {{ form_row(form.habitation) }}
+            
+            {{ form_row(form.email) }}
+            {{ form_widget(form.enabled, {'attr':
+                                        {'class':'form-control'}, 'checked':'checked', 'required':false,'type':'checkbox' } ) }}
+            {{form_label(form.enabled)}}
+            <button type="submit" class="btn btn-primary">Créer</button>
+            <a href="{{ path('utilisateur_index') }}" class="btn btn-danger">Retour à la liste</a>
+        </div>
+        {{ form_end(form, {'render_rest': true}) }}
+
+
+    </div>
+
+{% endblock %}

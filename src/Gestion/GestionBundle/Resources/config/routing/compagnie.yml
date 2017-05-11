@@ -13,6 +13,11 @@ compagnie_new:
     defaults: { _controller: "GestionBundle:Compagnie:new" }
     methods:  [GET, POST]
 
+compagnie_gerant_new:
+    path:     /gerant
+    defaults: { _controller: "GestionBundle:Compagnie:gerant" }
+    methods:  [GET, POST]
+
 compagnie_edit:
     path:     /{id}/edit
     defaults: { _controller: "GestionBundle:Compagnie:edit" }

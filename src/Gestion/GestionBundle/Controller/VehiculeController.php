@@ -47,7 +47,7 @@ class VehiculeController extends Controller
             $em = $this->getDoctrine()->getManager();
 			$vehicule->setCreated(new \DateTime("now"));
             if($this->getUser()->getCompagnie()!=null){
-                $conducteur->setCompagnie($this->getUser()->getCompagnie());
+                $vehicule->setCompagnie($this->getUser()->getCompagnie());
             }
             $em->persist($vehicule);
             $em->flush();

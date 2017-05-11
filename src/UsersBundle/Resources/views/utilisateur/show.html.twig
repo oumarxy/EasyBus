@@ -67,15 +67,15 @@
                                             <td>
                                                 <input type="checkbox" 
                                                        {% for role in utilisateur.roles %}
-                                                           {% if role == 'ROLE_AGENT' %} checked {% endif %}
-                                                       {% endfor %}value="ROLE_AGENT"  id="agent" name="choixrole[]" /><label for="agent"></label></td>
+                                                           {% if role == 'ROLE_COMPA' %} checked {% endif %}
+                                                       {% endfor %}value="ROLE_COMPA"  id="agent" name="choixrole[]" /><label for="agent"></label></td>
                                         </tr>
                                         <tr>
                                             <th>Role Administrateur</th> 
                                             <td><input type="checkbox" 
                                                        {% for role in utilisateur.roles %}
-                                                           {% if role == 'ROLE_ADMIN' %} checked  {% endif %}
-                                                       {% endfor %} value="ROLE_ADMIN" id="admin" name="choixrole[]" /><label for="admin"></label></td>
+                                                           {% if role == 'ROLE_ADMIN_COMPA' %} checked  {% endif %}
+                                                       {% endfor %} value="ROLE_ADMIN_COMPA" id="admin" name="choixrole[]" /><label for="admin"></label></td>
 
                                         </tr>
                                         

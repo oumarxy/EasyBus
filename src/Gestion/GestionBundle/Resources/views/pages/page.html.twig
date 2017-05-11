@@ -9,13 +9,18 @@
 
             </div><!-- /.col-* -->
 
-            <div class="col-sm-8 col-lg-9">
+            <div class="col-sm-8 col-lg-9">          
         {% if page == "a-propos" %} 
                    {% include "GestionBundle::pages/sections/a-propos.html.twig" %}
         {% elseif page == "aide" %}
                      {% include "GestionBundle::pages/sections/aide.html.twig" %}
+		{% elseif page == "savoir-plus" %}
+                     {% include "GestionBundle::pages/sections/savoir-plus.html.twig" %}
          {% elseif page== "termes-conditions" %}
                      {% include "GestionBundle::pages/sections/termes-conditions.html.twig" %}
+		{% else %}
+		
+					<h2>Aucune page trouvée. </h2>
         {% endif  %}
             </div><!-- /.row --> 
         </div><!-- /.container -->

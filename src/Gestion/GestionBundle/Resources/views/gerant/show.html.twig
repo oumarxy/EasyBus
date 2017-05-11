@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="background-whitte p20 mb50">
+            <h4>Les utilisateurs </h4>
+                    <div class="col-sm-6">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th>Login</th>
+                                    <td>{{ utilisateur.username }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ utilisateur.nom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Prenoms</th>
+                                    <td>{{ utilisateur.prenoms }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Habitation</th>
+                                    <td>{{ utilisateur.habitation }}</td>
+                                </tr>
+                                 <tr>
+                                    <th>Compagnie</th>
+                                    <td>{{ utilisateur.compagnie }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tel1</th>
+                                    <td>{{ utilisateur.tel1 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tel2</th>
+                                    <td>{{ utilisateur.tel2 }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>{{ utilisateur.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Etat</th>
+                                    <td>{% if utilisateur.enabled == 1%} Active{%else%} désactive{% endif %}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  
+                        <div class="col-sm-6">
+                            <form method="post" action="{{ path('utilisateur_show', { 'id': utilisateur.id }) }}">
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                        <tr >
+                                            <th colspan="2">AFFECTER UN PRIVILEGE</th>
+                                                {% set choix = 'aucun' %}
+                                        </tr>
+                                    </thead>
+                                    {#% for role in utilisateur.roles %}{% if role != 'ROLE_USER' %} {%set choix = role %}{% endif %} {% endfor %#}
+
+
+                                    <tbody>
+
+                                        <tr>
+                                            <th>Role Agent</th>
+                                            <td>
+                                                <input type="checkbox" 
+                                                       {% for role in utilisateur.roles %}
+                                                           {% if role == 'ROLE_AGENT' %} checked {% endif %}
+                                                       {% endfor %}value="ROLE_AGENT"  id="agent" name="choixrole[]" /><label for="agent"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Role Administrateur</th> 
+                                            <td><input type="checkbox" 
+                                                       {% for role in utilisateur.roles %}
+                                                           {% if role == 'ROLE_ADMIN' %} checked  {% endif %}
+                                                       {% endfor %} value="ROLE_ADMIN" id="admin" name="choixrole[]" /><label for="admin"></label></td>
+
+                                        </tr>
+                                        
+
+                                    </tbody> 
+                                </table>
+
+                                <button type="submit" class="btn btn-success">Attribuer un role</button>
+                            </form>
+                        </div>
+
+                                                       <div class="clearfix"></div>
+               
+                                                       <div>
+                    <a href="{{ path('utilisateur_index') }}" class="btn btn-primary">Liste des utilisateurs</a>
+                    <a href="{{ path('utilisateur_edit', { 'id': utilisateur.id }) }}" class="btn btn-danger">Modifier</a>
+                </div>
+            </div>
+                                                        
+
+
+{% endblock %}
